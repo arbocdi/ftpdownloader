@@ -1,0 +1,6 @@
+<FTPConfig>
+   <host>127.0.0.1</host>
+   <port>21</port>
+   <username>remote</username>
+   <password>remote</password>
+</FTPConfig>

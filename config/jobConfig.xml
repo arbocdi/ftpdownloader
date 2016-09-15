@@ -1,0 +1,9 @@
+<jobConfig>
+   <ftpInitialDir>/ftpFiles</ftpInitialDir>
+   <destFolderPath>ftpFiles</destFolderPath>
+   <filePattern>^.*$</filePattern>
+   <files>30</files>
+   <cronSchedule>0 * * * * ?</cronSchedule>
+   <deleteSourceFile>false</deleteSourceFile>
+   <jobType>DOWNLOAD</jobType>
+</jobConfig>

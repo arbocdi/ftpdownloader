@@ -1,0 +1,45 @@
+FTPDownloader. Руководство пользователя.
+
+Запуск:
+1) перейти в каталог проекта
+2) выполнить ./start.sh
+	Загрузчик запустится в режиме демона, потоки вывода будут перенаправлены в output.tx, обычно
+этот файл содержит мало информации или не содержит её вовсе.
+	PID процесса будет сохранен в файле pid.txt
+
+Останов:
+1) перейти в каталог проекта
+2) выполнить ./stop.sh
+При этом загрузчику будет послан сигнал SIGTERM (остановится). Загрузчик остановится не мгновенно,
+а лишь тогда, когда текущий загружаемый файл будет загружен до конца. В логах должно появится сообщение:
+=======FTPDownloader stopped===========
+
+Файлы конфигурации.
+Конфигурируется загрузчик при помощи нескольких xml-файлов, расположенных в каталоге config
+
+
+1)ftpConfig.xml - этот файл содержит реквизиты доступа к фтп-серверу, с которого нужно логи забирать.
+<FTPConfig>
+	<host>10.230.16.34</host>
+	<port>21</port>
+	<username>getcdr</username>
+<password>getcdr</password>
+</FTPConfig>
+
+2)jobConfig.xml - конфигурация работы фтп-загрузчика
+<jobConfig>
+   <ftpInitialDir>/usr/protei/data/Protei-DPI/cdr/gy_cdr_test</ftpInitialDir>
+   <destFolderPath>ftpFiles</destFolderPath>
+   <filePattern>^AS.*$</filePattern>
+   <files>3</files>
+   <cronSchedule>0 * * * * ?</cronSchedule>
+   <deleteSourceFile>false</deleteSourceFile>
+</jobConfig>
+3)jobResults.xml - этот файл содержит время модификации последнего загруженного файла.
+<jobResults>
+   <lastDownloadedFile>2016-05-20 08:21:17 +0000</lastDownloadedFile>
+</jobResults>
+4)logger.xml - стандартный файл конфигурации logback
+
+
+Логи располагаются в каталоге logs.

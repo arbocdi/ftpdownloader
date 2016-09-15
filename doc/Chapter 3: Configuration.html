@@ -1,0 +1,1596 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <title>Chapter 3: Configuration</title>
+    
+    <link rel="stylesheet" type="text/css" href="Chapter%203:%20Configuration_files/common.css">
+    <link rel="stylesheet" type="text/css" href="Chapter%203:%20Configuration_files/screen.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="Chapter%203:%20Configuration_files/_print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="Chapter%203:%20Configuration_files/prettify.css" media="screen">
+
+  </head>
+  <body onload="prettyPrint(); decorate();">
+
+    <script type="text/javascript">prefix='../'</script>
+    <script type="text/javascript" src="Chapter%203:%20Configuration_files/prettify.js"></script>
+    <script src="Chapter%203:%20Configuration_files/header.js" type="text/javascript"></script><table border="0" width="100%"><tbody><tr><td><a href="http://logback.qos.ch/"><img src="Chapter%203:%20Configuration_files/lblogo.jpg" alt="" border="0"></a></td><td>&nbsp;</td></tr></tbody></table><div id="headerLine"></div>
+    <script type="text/javascript" src="Chapter%203:%20Configuration_files/dsl.js"></script>
+    <script type="text/javascript" src="Chapter%203:%20Configuration_files/jquery-min.js"></script>
+    <script type="text/javascript" src="Chapter%203:%20Configuration_files/decorator.js"></script>
+
+    <div id="left">
+      <noscript>Please turn on Javascript to view this menu</noscript>
+      <script src="Chapter%203:%20Configuration_files/left.js" type="text/javascript"></script><div class="menuGroup"><p class="menu_header">Logback project</p><p class="menu"><a href="http://logback.qos.ch/index.html">Introduction</a></p><p class="menu"><a href="http://logback.qos.ch/download.html">Download</a></p><p class="menu"><a href="http://logback.qos.ch/documentation.html">Documentation</a></p><p class="menu"><a href="http://logback.qos.ch/license.html">License</a></p><p class="menu"><a href="http://logback.qos.ch/news.html">News</a></p><p class="menu_header">Support</p><p class="menu"><a href="http://logback.qos.ch/mailinglist.html">Mailing Lists</a></p><p class="menu"><a href="http://logback.qos.ch/bugreport.html">Bug Report</a></p><p class="menu"><a href="http://github.com/qos-ch/logback">Source Repository</a></p><p class="menu"><a href="http://logback.qos.ch/volunteer.html">Call for volunteers</a></p><p class="menu"><a href="http://www.qos.ch/shop/products/professionalSupport">Support offerings</a></p><p class="menu_header">Sister projects</p><p class="menu"><a href="http://audit.qos.ch/">Logback-audit</a></p><p class="menu_header">Online Tools</p><p class="menu"><a href="http://logback.qos.ch/translator/">log4j.properties Translator</a></p><p class="menu"><a href="http://logback.qos.ch/translator/asGroovy.html">logback.XML to Groovy</a></p></div><p>
+    </p></div>
+    <div id="right">
+      <script src="Chapter%203:%20Configuration_files/menu.js" type="text/javascript"></script><p class="menu_header">Chapter Index</p><p class="menu"><a href="http://logback.qos.ch/manual/introduction.html"><b>Ch1: Introduction to logback</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/architecture.html"><b>Ch2: Architecture</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/configuration.html"><b>Ch3: Configuration</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/appenders.html"><b>Ch4: Appenders</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/encoders.html"><b>Ch5: Encoders</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/layouts.html"><b>Ch6: Layouts</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/filters.html"><b>Ch7: Filters</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/mdc.html"><b>Ch8: Mapped Diagnostic Contexts</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/loggingSeparation.html"><b>Ch9: Logging Separation</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/jmxConfig.html"><b>Ch10: JMX Configurator</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/onJoran.html"><b>Ch11: Joran</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/groovy.html"><b>Ch12: Groovy Configuration</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/migrationFromLog4j.html"><b>Ch13: Migration from log4j</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/receivers.html"><b>Ch14: Receivers</b></a></p><p class="menu"><a href="http://logback.qos.ch/manual/usingSSL.html"><b>Ch15: Using SSL</b></a></p><p style="border: 1px solid #cccccc;"></p><p style="border: 1px solid #cccccc;"></p><p><script async="" src="Chapter%203:%20Configuration_files/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7471410671306824" data-ad-slot="6377851613" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </p></div>
+    <div id="content" class="chapter">
+      
+    <h1>Chapter 3: Logback configuration</h1>
+
+    <a href="http://logback.qos.ch/manual/configuration_ja.html">&#21644;&#35379; (Japanese translation)</a>
+
+      
+    <div class="quote">
+      <p><em>In symbols one observes an advantage in discovery which
+      is greatest when they express the exact nature of a thing
+      briefly and, as it were, picture it; then indeed the labor of
+      thought is wonderfully diminished.</em>
+      </p>
+      <p>—GOTTFRIED WILHELM LEIBNIZ</p>
+    </div>
+
+
+    <script src="Chapter%203:%20Configuration_files/creative.js" type="text/javascript"></script>		<table style="margin-left: 0em; padding-top:0ex" cellpadding="0" cellspacing="0" width="70%">      <tbody><tr>        <td>                  <p class="author">            Authors: Ceki Gülcü, Sébastien Pennec, Carl Harris          <br>          Copyright © 2000-2016, QOS.ch</p>        </td>        <td>            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">        <img alt="Creative Commons License" style="border-width: 0; margin-left: 1em" src="Chapter%203:%20Configuration_files/somerights20.png">          </a>        </td>      </tr>      <tr>        <td>          <p>            This document is licensed under a            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">              Creative Commons              Attribution-NonCommercial-ShareAlike 2.5              License            </a>          </p>        </td>        <td></td>			</tr>		</tbody></table>
+
+
+    <p>We start by presenting ways for configuring logback, with many
+    example configuration scripts.  Joran, the configuration framework
+    upon which logback relies will be presented in <a href="http://logback.qos.ch/manual/onJoran.html">a later chapter</a>.
+    </p>
+
+
+    <h2 class="doAnchor" name="auto_configuration"><a name="auto_configuration" href="#auto_configuration"><span class="anchor"></span></a>Configuration in
+    logback</h2>
+    
+    <p>Inserting log requests into the application code requires a
+    fair amount of planning and effort. Observation shows that
+    approximately four percent of code is dedicated to
+    logging. Consequently, even a moderately sized application will
+    contain thousands of logging statements embedded within its
+    code. Given their number, we need tools to manage these log
+    statements.
+    </p>
+
+    <p>Logback can be configured either programmatically or with a
+    configuration script expressed in XML or Groovy format. By the
+    way, existing log4j users can convert their
+    <em>log4j.properties</em> files to <em>logback.xml</em> using our
+    <a href="http://logback.qos.ch/translator/">PropertiesTranslator</a>
+    web-application.
+    </p>
+
+    <p>Let us begin by discussing the initialization steps that
+    logback follows to try to configure itself:
+    </p>
+
+    <ol>
+      <li>
+        <p>Logback tries to find a file called
+        <em>logback.groovy</em> <a href="http://logback.qos.ch/faq.html#configFileLocation">in the
+        classpath</a>.</p>
+      </li>
+
+      <li>
+        <p>If no such file is found, logback tries to find a file
+        called <em>logback-test.xml</em> <a href="http://logback.qos.ch/faq.html#configFileLocation">in the
+        classpath</a>.</p>
+      </li>
+
+      <li><p>If no such file is found, it checks for the file
+      <em>logback.xml</em>  <a href="http://logback.qos.ch/faq.html#configFileLocation">in the
+        classpath</a>..</p>
+      </li>
+      
+      <li><p>If no such file is found, <a href="http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html">
+      service-provider loading facility</a> (introduced in JDK 1.6) is
+      used to resolve the implementation of <a href="http://logback.qos.ch/xref/ch/qos/logback/classic/spi/Configurator.html">
+      <code>com.qos.logback.classic.spi.Configurator</code></a>
+      interface by looking up the file
+      <em>META-INF\services\ch.qos.logback.classic.spi.Configurator</em>
+      in the class path. Its contents should specify the fully
+      qualified class name of the desired <code>Configurator</code>
+      implementation. 
+      </p>
+      </li>
+      
+      <li><p>If none of the above succeeds, logback configures itself
+      automatically using the <a href="http://logback.qos.ch/xref/ch/qos/logback/classic/BasicConfigurator.html"><code>BasicConfigurator</code></a>
+      which will cause logging output to be directed to the console.
+      </p> 
+      </li> 
+
+    </ol>
+
+    <p>The last step is meant as last-ditch effort to provide a
+    default (but very basic) logging functionality in the absence of a
+    configuration file.
+    </p>
+
+
+    <p>If you are using Maven and if you place the
+    <em>logback-test.xml</em> under the <em>src/test/resources</em>
+    folder, Maven will ensure that it won't be included in the
+    artifact produced. Thus, you can use a different configuration
+    file, namely <em>logback-test.xml</em> during testing, and another
+    file, namely, <em>logback.xml</em>, in production. 
+    </p>
+
+    <p><span class="label">Fast start-up</span> It takes about 100
+    miliseconds for Joran to parse a given logback configuration
+    file. To shave off those miliseconds at aplication start up, you
+    can use the service-provider loading facility (item 4 above) to
+    load your own custom <code>Configurator</code> class with <a href="http://logback.qos.ch/xref/ch/qos/logback/classic/BasicConfigurator.html">BasicConfigrator</a>
+    serving as a good starting point.</p>
+
+
+    <h3 class="doAnchor" name="automaticConf"><a name="automaticConf" href="#automaticConf"><span class="anchor"></span></a>Automatically
+    configuring logback</h3>
+
+    <p>The simplest way to configure logback is by letting logback
+    fall back to its default configuration. Let us give a taste of how
+    this is done in an imaginary application called
+    <code>MyApp1</code>.
+    </p>
+
+    <p class="example">Example: Simple example of
+    <code>BasicConfigurator</code> usage <a href="http://logback.qos.ch/xref/chapters/configuration/MyApp1.html">(logback-examples/src/main/java/chapters/configuration/MyApp1.java)</a></p>
+
+    <pre class="prettyprint source"><span class="kwd">package</span><span class="pln"> manual</span><span class="pun">.</span><span class="pln">configuration</span><span class="pun">;</span><span class="pln"><br><br></span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">slf4j</span><span class="pun">.</span><span class="typ">Logger</span><span class="pun">;</span><span class="pln"><br></span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">slf4j</span><span class="pun">.</span><span class="typ">LoggerFactory</span><span class="pun">;</span><span class="pln"><br><br></span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyApp1</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="typ">Logger</span><span class="pln"> logger </span><span class="pun">=</span><span class="pln"> </span><span class="typ">LoggerFactory</span><span class="pun">.</span><span class="pln">getLogger</span><span class="pun">(</span><span class="typ">MyApp1</span><span class="pun">.</span><span class="kwd">class</span><span class="pun">);</span><span class="pln"><br><br>&nbsp; </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">(</span><span class="typ">String</span><span class="pun">[]</span><span class="pln"> args</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; logger</span><span class="pun">.</span><span class="pln">info</span><span class="pun">(</span><span class="str">"Entering application."</span><span class="pun">);</span><span class="pln"><br><br>&nbsp; &nbsp; </span><span class="typ">Foo</span><span class="pln"> foo </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Foo</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp; foo</span><span class="pun">.</span><span class="pln">doIt</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp; logger</span><span class="pun">.</span><span class="pln">info</span><span class="pun">(</span><span class="str">"Exiting application."</span><span class="pun">);</span><span class="pln"><br>&nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span></pre>
+
+  <p>This class defines a static logger variable. It then instantiates
+  a <code>Foo</code> object. The <code>Foo</code> class is listed
+  below:
+  </p>
+
+  <p class="example">Example: Small class doing logging 
+  <a href="http://logback.qos.ch/xref/chapters/configuration/Foo.html">(logback-examples/src/main/java/chapters/configuration/Foo.java)</a>
+  </p>
+
+  <pre class="prettyprint source"><span class="kwd">package</span><span class="pln"> chapters</span><span class="pun">.</span><span class="pln">configuration</span><span class="pun">;</span><span class="pln"><br>&nbsp; <br></span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">slf4j</span><span class="pun">.</span><span class="typ">Logger</span><span class="pun">;</span><span class="pln"><br></span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">slf4j</span><span class="pun">.</span><span class="typ">LoggerFactory</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp;<br></span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Foo</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Logger</span><span class="pln"> logger </span><span class="pun">=</span><span class="pln"> </span><span class="typ">LoggerFactory</span><span class="pun">.</span><span class="pln">getLogger</span><span class="pun">(</span><span class="typ">Foo</span><span class="pun">.</span><span class="kwd">class</span><span class="pun">);</span><span class="pln"><br>&nbsp; <br>&nbsp; </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> doIt</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; logger</span><span class="pun">.</span><span class="pln">debug</span><span class="pun">(</span><span class="str">"Did it again!"</span><span class="pun">);</span><span class="pln"><br>&nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span></pre>
+
+
+    <p>In order to run the examples in this chapter, you need to make
+    sure that certain jar files are present on the class path.  Please
+    refer to the <a href="http://logback.qos.ch/setup.html">setup page</a> for further
+    details.
+    </p>
+
+    <p>Assuming the configuration files <em>logback-test.xml</em> or
+    <em>logback.xml</em> are not present, logback will default to
+    invoking <a href="http://logback.qos.ch/xref/ch/qos/logback/classic/BasicConfigurator.html"><code>BasicConfigurator</code></a>
+    which will set up a minimal configuration. This minimal
+    configuration consists of a <code>ConsoleAppender</code> attached
+    to the root logger.  The output is formatted using a
+    <code>PatternLayoutEncoder</code> set to the pattern
+    <em>%d{HH:mm:ss.SSS}&nbsp;[%thread]&nbsp;%-5level&nbsp;%logger{36}&nbsp;-&nbsp;%msg%n</em>. Moreover,
+    by default the root logger is assigned the <code>DEBUG</code>
+    level.
+    </p>
+
+    <p>Thus, the output of the command <em>java chapters.configuration.MyApp1</em>
+    should be similar to:
+    </p>
+
+    <p class="source">16:06:09.031 [main] INFO  chapters.configuration.MyApp1 - Entering application.
+16:06:09.046 [main] DEBUG chapters.configuration.Foo - Did it again!
+16:06:09.046 [main] INFO  chapters.configuration.MyApp1 - Exiting application.</p>
+
+
+   <p class="highlight">Except code that configures logback (if such
+   code exists) client code does not need to depend on
+   logback. Applications that use logback as their logging framework
+   will have a compile-time dependency on SLF4J but not logback.
+   </p>
+
+   <p>The <code>MyApp1</code> application links to logback via calls
+   to <code>org.slf4j.LoggerFactory</code> and
+   <code>org.slf4j.Logger</code> classes, retrieve the loggers it
+   wishes to use, and chugs on.  Note that the only dependencies of
+   the <code>Foo</code> class on logback are through
+   <code>org.slf4j.LoggerFactory</code> and
+   <code>org.slf4j.Logger</code> imports.  Except code that configures
+   logback (if such code exists) client code does not need to depend
+   on logback. Since SLF4J permits the use of any logging
+   framework under its abstraction layer, it is easy to migrate
+   large bodies of code from one logging framework to another.
+   </p>
+
+   <h3>Automatic configuration with <em>logback-test.xml</em> or
+   <em>logback.xml</em></h3>
+
+   <p>As mentioned earlier, logback will try to configure itself using
+   the files <em>logback-test.xml</em> or <em>logback.xml</em> if
+   found on the class path. Here is a configuration file equivalent to
+   the one established by <code>BasicConfigurator</code> we've just
+   seen.
+   </p>
+
+   <p class="example">Example: Basic configuration file
+   (logback-examples/src/main/resources/chapters/configuration/sample0.xml)</p>
+   <span class="asGroovy" onclick="return asGroovy('sample0');">View as .groovy</span>
+
+
+  <pre id="sample0" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.ConsoleAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="com">&lt;!-- encoders are assigned the type<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ch.qos.logback.classic.encoder.PatternLayoutEncoder by default --&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+   <p>After you have renamed <em>sample0.xml</em> as
+   <em>logback.xml</em> (or <em>logback-test.xml</em>) place it into a
+   directory accessible from the class path. Running the <em>MyApp1</em>
+   application should give identical results to its previous run.</p>
+
+   <h4 class="doAnchor" name="automaticStatusPrinting"><a name="automaticStatusPrinting" href="#automaticStatusPrinting"><span class="anchor"></span></a>Automatic
+   printing of status messages in case of warning or errors</h4>
+
+   <p class="highlight">If warning or errors occur during the parsing
+   of the configuration file, logback will automatically print its
+   internal status messages on the console.</p>
+ 
+   <p>If warnings or errors occur during the parsing of the
+   configuration file, logback will automatically print its internal
+   status data on the console. Note that to avoid duplication,
+   automatic status printing is disabled if the user explicitly
+   registers a status listener (defined below).</p>
+
+   <p>In the absence of warnings or errors, if you still wish to
+   inspect logback's internal status, then you can instruct logback to
+   print status data by invoking the <code>print()</code> of the
+   <code>StatusPrinter</code> class. The <em>MyApp2</em> application
+   shown below is identical to <em>MyApp1</em> except for the addition
+   of two lines of code for printing internal status data.</p>
+
+    <p class="example">Example: Print logback's internal status
+    information <a href="http://logback.qos.ch/xref/chapters/configuration/MyApp2.html">(logback-examples/src/main/java/chapters/configuration/MyApp2.java)</a></p>
+
+  
+<pre class="prettyprint lang-java source"><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">(</span><span class="typ">String</span><span class="pun">[]</span><span class="pln"> args</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="com">// assume SLF4J is bound to logback in the current environment</span><span class="pln"><br>&nbsp; </span><b><span class="typ">LoggerContext</span><span class="pln"> lc </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="typ">LoggerContext</span><span class="pun">)</span><span class="pln"> </span><span class="typ">LoggerFactory</span><span class="pun">.</span><span class="pln">getILoggerFactory</span><span class="pun">();</span></b><span class="pln"><br>&nbsp; </span><span class="com">// print logback's internal status</span><span class="pln"><br>&nbsp; </span><b><span class="typ">StatusPrinter</span><span class="pun">.</span><span class="pln">print</span><span class="pun">(</span><span class="pln">lc</span><span class="pun">);</span></b><span class="pln"><br>&nbsp; </span><span class="pun">...</span><span class="pln"><br></span><span class="pun">}</span></pre>
+
+  <p>If everything goes well, you should see the following output on the console</p>
+
+   <div class="source longline"><pre>17:44:58,578 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback-test.xml]
+17:44:58,671 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+17:44:58,671 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+17:44:58,687 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [STDOUT]
+17:44:58,812 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Popping appender named [STDOUT] from the object stack
+17:44:58,812 |-INFO in ch.qos.logback.classic.joran.action.LevelAction - root level set to DEBUG
+17:44:58,812 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[root]
+
+17:44:58.828 [main] INFO  chapters.configuration.MyApp2 - Entering application.
+17:44:58.828 [main] DEBUG chapters.configuration.Foo - Did it again!
+17:44:58.828 [main] INFO  chapters.configuration.MyApp2 - Exiting application.
+</pre></div>
+
+  <p>At the end of this output, you can recognize the lines that were
+  printed in the previous example. You should also notice the
+  logback's internal messages, a.k.a. <code>Status</code> objects,
+  which allow convenient access to logback's internal state.
+  </p>
+
+   <h4 class="doAnchor" name="dumpingStatusData"><a name="dumpingStatusData" href="#dumpingStatusData"><span class="anchor"></span></a>Status data</h4>
+
+   <p class="highlight">Enabling output of status data usually goes a
+   long way in the diagnosis of issues with logback. As such, it is
+   highly recommended and should be considered as a recourse of
+   <b>first</b> resort.</p>
+
+   <p>Instead of invoking <code>StatusPrinter</code> programmatically
+   from your code, you can instruct the configuration file to dump
+   status data, even in the absence of errors. To achieve this, you
+   need to set the <span class="attr">debug</span> attribute of the
+   <em>configuration</em> element, i.e. the top-most element in the
+   configuration file, as shown below. Please note that this <span class="attr">debug</span> attribute relates only to the status
+   data. It does <em>not</em> affect logback's configuration
+   otherwise, in particular with respect to logger levels. (If you are
+   asking, no, the root logger will <em>not</em> be set to
+   <code>DEBUG</code>.)
+   </p>
+
+   <p class="example">Example: Basic configuration file using debug
+   mode
+   (logback-examples/src/main/resources/chapters/configuration/sample1.xml)</p>
+   <span class="asGroovy" onclick="return asGroovy('sample1');">View as .groovy</span>
+
+   <pre id="sample1" class="prettyprint source"><span class="tag">&lt;configuration</span><span class="pln"> </span><span class="big bold"><span class="atn">debug</span><span class="pun">=</span><span class="atv">"true"</span></span><span class="tag">&gt;</span><span class="pln"> <br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.ConsoleAppender"</span><span class="tag">&gt;</span><span class="pln"> <br>&nbsp; &nbsp; </span><span class="com">&lt;!-- encoders are &nbsp;by default assigned the type<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ch.qos.logback.classic.encoder.PatternLayoutEncoder --&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+  
+   <p>Setting <code>debug="true"</code> within the
+   &lt;configuration&gt; element will output status information,
+   assuming that:
+   </p>
+   <ol>
+     <li>the configuration file is found</li>
+     <li>the configuration file is well-formed XML.</li>
+   </ol>
+     
+   <p>If any of these two conditions is not fulfilled, Joran cannot
+   interpret the <span class="attr">debug</span> attribute since the
+   configuration file cannot be read. If the configuration file is
+   found but is malformed, then logback will detect the error
+   condition and automatically print its internal status on the
+   console. However, if the configuration file cannot be found,
+   logback will not automatically print its status data, since this is
+   not necessarily an error condition. Programmatically invoking
+   <code>StatusPrinter.print()</code> as shown in the <a href="http://logback.qos.ch/xref/chapters/configuration/MyApp2.html"><em>MyApp2</em></a>
+   application above ensures that status information is printed in
+   every case.</p>
+
+ 
+ 
+   <p><span class="label">Forcing status output</span> In the absence
+   of status messages, tracking down a rogue <em>logback.xml</em>
+   configuration file can be difficult, especially in production where
+   the application source cannot be easily modified. To help identify
+   the location of a rogue configuration file, you can set a
+   <code>StatusListener</code> via the "logback.statusListenerClass"
+   system property (<a href="#logback.statusLC">defined below</a>) to
+   force output of status messages. The "logback.statusListenerClass"
+   system property can also be used to silence output automatically
+   generated in case of errors.
+   </p>
+
+   <p>By the way, setting <code>debug="true"</code> is strictly
+   equivalent to installing an
+   <code>OnConsoleStatusListener</code>. Status listeners are
+   disccussed further below. The installation of
+   <code>OnConsoleStatusListener</code> is shown next. </p>
+
+   <p class="example">Example: Registering a status listener
+   (logback-examples/src/main/resources/chapters/configuration/onConsoleStatusListener.xml)</p>
+   <span class="asGroovy" onclick="return asGroovy('onConsoleStatusListener');">View as .groovy</span>
+   <pre id="onConsoleStatusListener" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br>&nbsp; </span><b><span class="tag">&lt;statusListener</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.status.OnConsoleStatusListener"</span><span class="pln"> </span><span class="tag">/&gt;</span></b><span class="pln"> &nbsp;<br><br>&nbsp; ... the rest of the configuration file &nbsp;<br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+
+   <p>Enabling output of status data, either via the debug attribute
+   or equivalently by installing <code>OnConsoleStatusListener</code>,
+   will go a long way in helping you diagnose logback issues. As such,
+   enabling logback status data is very highly recommended and should
+   be considered as a recourse of <b>first</b> resort.
+   </p>
+
+   <h3 class="doAnchor" name="configFileProperty"><a name="configFileProperty" href="#configFileProperty"><span class="anchor"></span></a>Specifying the
+   location of the default configuration file as a system
+   property</h3>
+
+   <p>You may specify the location of the default configuration file
+   with a system property named
+   <code>"logback.configurationFile"</code>. The value of this
+   property can be a URL, a resource on the class path or a path to a
+   file external to the application.
+   </p>
+
+   <p class="source">java <b>-Dlogback.configurationFile=/path/to/config.xml</b> chapters.configuration.MyApp1</p>
+
+   <p>Note that the file extension must be ".xml" or ".groovy". Other
+   extensions are ignored. <a href="#logback.statusLC">Explicitly
+   registering a status listener</a> may help debugging issues
+   locating the configuration file.</p>
+
+
+   <h3 class="doAnchor" name="autoScan"><a name="autoScan" href="#autoScan"><span class="anchor"></span></a>Automatically reloading
+   configuration file upon modification</h3>
+
+   <p class="highlight">Logback-classic can scan for changes in its
+   configuration file and automatically reconfigure itself when the
+   configuration file changes.</p>
+
+   <p>If instructed to do so, logback-classic will scan for changes in
+   its configuration file and automatically reconfigure itself when
+   the configuration file changes. In order to instruct
+   logback-classic to scan for changes in its configuration file and
+   to automatically re-configure itself set the <span class="attr">scan</span> attribute of the
+   <code>&lt;configuration&gt;</code> element to true, as shown next.
+
+   </p>
+  
+   <p class="example">Example: Scanning for changes in configuration
+   file and automatic re-configuration
+   (logback-examples/src/main/resources/chapters/configuration/scan1.xml)</p>
+
+  <span class="asGroovy" onclick="return asGroovy('scan1');">View as .groovy</span>
+<pre id="scan1" class="prettyprint source"><span class="tag">&lt;configuration</span><span class="pln"> </span><b><span class="atn">scan</span><span class="pun">=</span><span class="atv">"true"</span></b><span class="tag">&gt;</span><span class="pln"> <br>&nbsp; ... <br></span><span class="tag">&lt;/configuration&gt;</span><span class="pln"> </span></pre>
+
+
+   <p>By default, the configuration file will be scanned for changes
+   once every minute. You can specify a different scanning period by
+   setting the <span class="attr">scanPeriod</span> attribute of the
+   <code>&lt;configuration&gt;</code> element. Values can be specified in
+   units of milliseconds, seconds, minutes or hours. Here is an
+   example:</p>
+
+  <p class="example">Example: Specifying a different scanning period
+  (logback-examples/src/main/resources/chapters/configuration/scan2.xml)</p>
+  <span class="asGroovy" onclick="return asGroovy('scan2');">View as .groovy</span>
+  <pre id="scan2" class="prettyprint source"><span class="tag">&lt;configuration</span><span class="pln"> </span><span class="atn">scan</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln"> </span><b><span class="atn">scanPeriod</span><span class="pun">=</span><span class="atv">"30 seconds"</span></b><span class="pln"> </span><span class="tag">&gt;</span><span class="pln"> <br>&nbsp; ...<br></span><span class="tag">&lt;/configuration&gt;</span><span class="pln"> </span></pre>
+
+   <p><span class="label">Note</span> If no unit of time is specified,
+   then the unit of time is assumed to be milliseconds, which is
+   usually inappropriate. If you change the default scanning period,
+   do not forget to specify a time unit.
+   </p>
+
+   <p>Behind the scenes, when you set the scan attribute to true, a
+   <code>TurboFilter</code> called <a href="http://logback.qos.ch/xref/ch/qos/logback/classic/turbo/ReconfigureOnChangeFilter.html">ReconfigureOnChangeFilter</a>
+   will be installed. TurboFilters are described in a <a href="http://logback.qos.ch/manual/filters.html#TurboFilter">later chapter</a>. As a
+   consequence, scanning is done "in-thread", that is any time a
+   printing method of logger is invoked. For example, for a logger
+   named <code>myLogger</code>, when you write
+   "myLogger.debug("hello");", and if the scan attribute is set to
+   true, then <code>ReconfigureOnChangeFilter</code> will be
+   invoked. Moreover, the said filter will be invoked even if
+   <code>myLogger</code> is disabled for the DEBUG level.
+   </p>
+
+   <p class="highlight">When a configuration file changes, it will be
+   automatically reloaded but only after several logger invocations
+   and after a delay determined by the scanning period.
+   </p>
+
+   <p>Given that <code>ReconfigureOnChangeFilter</code> is invoked
+   every time <em>any</em> logger is invoked, regardless of logger
+   level, <code>ReconfigureOnChangeFilter</code> is absolutely
+   performance critical. So much so that in fact, the check whether
+   the scan period has elapsed or not, is too costly in itself. In
+   order to improve performance,
+   <code>ReconfigureOnChangeFilter</code> is in reality "alive" only
+   once every <em>N</em> logging operations.  Depending on how often
+   your application logs, the value of <em>N</em> can be modified on
+   the fly by logback. By default N is 16, although it can go as high
+   as 2^16 (=&nbsp;65536) for CPU-intensive applications.
+   </p>
+   
+   <p>In short, when a configuration file changes, it will be
+   automatically reloaded but only after several logger invocations
+   <em>and</em> after a delay determined by the scanning period.
+   </p>
+
+   
+   <h4 class="doAnchor" name="packagingData"><a name="packagingData" href="#packagingData"><span class="anchor"></span></a>Enabling packaging data in stack traces</h4>
+
+   <p class="highlight">While useful, packaging data is expensive to
+   compute, especially in applications with frequent exceptions.</p>
+
+   <p><span class="label notice">NOTE</span> As of version 1.1.4,
+   packaging data is disabled by default. </p>
+
+   <p>If instructed to do so, logback can include packaging data for
+   each line of the stack trace lines it outputs. Packaging data
+   consists of the name and version of the jar file whence the class
+   of the stack trace line originated. Packaging data can be very
+   useful in identifying software versioning issues. However, it is
+   rather expensive to compute, especially in application where
+   exceptions are thrown frequently. Here is a sample output:</p>
+
+   <pre>14:28:48.835 [btpool0-7] INFO  c.q.l.demo.prime.PrimeAction - 99 is not a valid value
+java.lang.Exception: 99 is invalid
+  at ch.qos.logback.demo.prime.PrimeAction.execute(PrimeAction.java:28) [classes/:na]
+  at org.apache.struts.action.RequestProcessor.processActionPerform(RequestProcessor.java:431) <b>[struts-1.2.9.jar:1.2.9]</b>
+  at org.apache.struts.action.RequestProcessor.process(RequestProcessor.java:236) [struts-1.2.9.jar:1.2.9]
+  at org.apache.struts.action.ActionServlet.doPost(ActionServlet.java:432) [struts-1.2.9.jar:1.2.9]
+  at javax.servlet.http.HttpServlet.service(HttpServlet.java:820) <b>[servlet-api-2.5-6.1.12.jar:6.1.12]</b>
+  at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:502) [jetty-6.1.12.jar:6.1.12]
+  at ch.qos.logback.demo.UserServletFilter.doFilter(UserServletFilter.java:44) [classes/:na]
+  at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1115) <b>[jetty-6.1.12.jar:6.1.12]</b>
+  at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:361) [jetty-6.1.12.jar:6.1.12]
+  at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:417) [jetty-6.1.12.jar:6.1.12]
+  at org.mortbay.jetty.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:230) [jetty-6.1.12.jar:6.1.12]</pre>
+
+
+  <p>Packaging data is disabled by default but can be enabled by
+  configuration:</p>
+
+<pre class="prettyprint source"><span class="tag">&lt;configuration</span><span class="pln"> </span><span class="big bold"><span class="atn">packagingData</span><span class="pun">=</span><span class="atv">"true"</span></span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; ...<br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+   <p>Alternatively, packaging data can be enabled/disabled
+   programmatically by invoking the <a href="http://logback.qos.ch/apidocs/ch/qos/logback/classic/LoggerContext.html#setPackagingDataEnabled%28boolean%29">setPackagingDataEnabled(boolean)</a>
+   method in <code>LoggerContext</code>, as shown next:</p>
+
+
+<pre class="prettyprint lang-java source"><span class="pln">&nbsp; </span><span class="typ">LoggerContext</span><span class="pln"> lc </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="typ">LoggerContext</span><span class="pun">)</span><span class="pln"> </span><span class="typ">LoggerFactory</span><span class="pun">.</span><span class="pln">getILoggerFactory</span><span class="pun">();</span><span class="pln"><br>&nbsp; </span><b><span class="pln">lc</span><span class="pun">.</span><span class="pln">setPackagingDataEnabled</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span></b></pre>
+
+   <h3 class="doAnchor" name="joranDirectly"><a name="joranDirectly" href="#joranDirectly"><span class="anchor"></span></a>Invoking
+   <code>JoranConfigurator</code> directly</h3>
+
+   <p>Logback relies on a configuration library called Joran, part of
+   logback-core. Logback's default configuration mechanism invokes
+   <code>JoranConfigurator</code> on the default configuration file it
+   finds on the class path. If you wish to override logback's default
+   configuration mechanism for whatever reason, you can do so by
+   invoking <code>JoranConfigurator</code> directly. The next
+   application, <em>MyApp3</em>, invokes JoranConfigurator on a
+   configuration file passed as a parameter.</p>
+   
+   <p class="example">Example: Invoking <code>JoranConfigurator</code>
+   directly <a href="http://logback.qos.ch/xref/chapters/configuration/MyApp3.html">(logback-examples/src/main/java/chapters/configuration/MyApp3.java)</a></p>
+
+<pre class="prettyprint source"><span class="kwd">package</span><span class="pln"> chapters</span><span class="pun">.</span><span class="pln">configuration</span><span class="pun">;</span><span class="pln"><br><br></span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">slf4j</span><span class="pun">.</span><span class="typ">Logger</span><span class="pun">;</span><span class="pln"><br></span><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">slf4j</span><span class="pun">.</span><span class="typ">LoggerFactory</span><span class="pun">;</span><span class="pln"><br><br></span><span class="kwd">import</span><span class="pln"> ch</span><span class="pun">.</span><span class="pln">qos</span><span class="pun">.</span><span class="pln">logback</span><span class="pun">.</span><span class="pln">classic</span><span class="pun">.</span><span class="typ">LoggerContext</span><span class="pun">;</span><span class="pln"><br></span><span class="kwd">import</span><span class="pln"> ch</span><span class="pun">.</span><span class="pln">qos</span><span class="pun">.</span><span class="pln">logback</span><span class="pun">.</span><span class="pln">classic</span><span class="pun">.</span><span class="pln">joran</span><span class="pun">.</span><span class="typ">JoranConfigurator</span><span class="pun">;</span><span class="pln"><br></span><span class="kwd">import</span><span class="pln"> ch</span><span class="pun">.</span><span class="pln">qos</span><span class="pun">.</span><span class="pln">logback</span><span class="pun">.</span><span class="pln">core</span><span class="pun">.</span><span class="pln">joran</span><span class="pun">.</span><span class="pln">spi</span><span class="pun">.</span><span class="typ">JoranException</span><span class="pun">;</span><span class="pln"><br></span><span class="kwd">import</span><span class="pln"> ch</span><span class="pun">.</span><span class="pln">qos</span><span class="pun">.</span><span class="pln">logback</span><span class="pun">.</span><span class="pln">core</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">StatusPrinter</span><span class="pun">;</span><span class="pln"><br><br></span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MyApp3</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="typ">Logger</span><span class="pln"> logger </span><span class="pun">=</span><span class="pln"> </span><span class="typ">LoggerFactory</span><span class="pun">.</span><span class="pln">getLogger</span><span class="pun">(</span><span class="typ">MyApp3</span><span class="pun">.</span><span class="kwd">class</span><span class="pun">);</span><span class="pln"><br><br>&nbsp; </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> main</span><span class="pun">(</span><span class="typ">String</span><span class="pun">[]</span><span class="pln"> args</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="com">// assume SLF4J is bound to logback in the current environment</span><span class="pln"><br>&nbsp; &nbsp; </span><b><span class="typ">LoggerContext</span><span class="pln"> context </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="typ">LoggerContext</span><span class="pun">)</span><span class="pln"> </span><span class="typ">LoggerFactory</span><span class="pun">.</span><span class="pln">getILoggerFactory</span><span class="pun">();</span></b><span class="pln"><br>&nbsp; &nbsp; <br>&nbsp; &nbsp; </span><b><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="typ">JoranConfigurator</span><span class="pln"> configurator </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">JoranConfigurator</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; configurator</span><span class="pun">.</span><span class="pln">setContext</span><span class="pun">(</span><span class="pln">context</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="com">// Call context.reset() to clear any previous configuration, e.g. default </span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="com">// configuration. For multi-step configuration, omit calling context.reset().</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; context</span><span class="pun">.</span><span class="pln">reset</span><span class="pun">();</span><span class="pln"> <br>&nbsp; &nbsp; &nbsp; configurator</span><span class="pun">.</span><span class="pln">doConfigure</span><span class="pun">(</span><span class="pln">args</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]);</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="typ">JoranException</span><span class="pln"> je</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="com">// StatusPrinter will handle this</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="typ">StatusPrinter</span><span class="pun">.</span><span class="pln">printInCaseOfErrorsOrWarnings</span><span class="pun">(</span><span class="pln">context</span><span class="pun">);</span></b><span class="pln"><br><br>&nbsp; &nbsp; logger</span><span class="pun">.</span><span class="pln">info</span><span class="pun">(</span><span class="str">"Entering application."</span><span class="pun">);</span><span class="pln"><br><br>&nbsp; &nbsp; </span><span class="typ">Foo</span><span class="pln"> foo </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Foo</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp; foo</span><span class="pun">.</span><span class="pln">doIt</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp; logger</span><span class="pun">.</span><span class="pln">info</span><span class="pun">(</span><span class="str">"Exiting application."</span><span class="pun">);</span><span class="pln"><br>&nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span></pre>
+
+   <p>This application fetches the <code>LoggerContext</code>
+   currently in effect, creates a new <code>JoranConfigurator</code>,
+   sets the context on which it will operate, resets the logger
+   context, and then finally asks the configurator to configure the
+   context using the configuration file passed as a parameter to the
+   application. Internal status data is printed in case of warnings or
+   errors. Note that for multi-step configuration,
+   <code>context.reset()</code> invocation should be omitted.</p>
+
+   <h3 class="doAnchor" name="viewingStatusMessages"><a name="viewingStatusMessages" href="#viewingStatusMessages"><span class="anchor"></span></a>Viewing status
+   messages </h3>
+
+   <p>Logback collects its internal status data in a <code><a href="http://logback.qos.ch/xref/ch/qos/logback/core/status/StatusManager.html">StatusManager</a></code>
+   object, accessible via the <code>LoggerContext</code>.
+   </p>
+
+   <p>Given a <code>StatusManager</code> you can access all the status
+   data associated with a logback context. To keep memory usage at
+   reasonable levels, the default <code>StatusManager</code>
+   implementation stores the status messages in two separate parts:
+   the header part and the tail part. The header part stores the first
+   <em>H</em> status messages whereas the tail part stores the last
+   <em>T</em> messages. At present time <em>H</em>=<em>T</em>=150,
+   although these values may change in future releases.</p>
+
+   <p>Logback-classic ships with a servlet called
+   ViewStatusMessagesServlet. This servlet prints the contents of the
+   <code>StatusManager</code> associated with the current
+   <code>LoggerContext</code> as an HTML table. Here is sample output.
+   </p>
+   
+   <a href="http://logback.qos.ch/manual/images/chapters/configuration/lbClassicStatus.jpg">
+     <img src="Chapter%203:%20Configuration_files/lbClassicStatus.jpg" alt="click to enlarge" width="90%">
+   </a>
+
+   <p>To add this servlet to your web-application, add the following
+   lines to its <em>WEB-INF/web.xml</em> file.</p>
+
+   <pre class="prettyprint source"><span class="pln">&nbsp; </span><span class="tag">&lt;servlet&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;servlet-name&gt;</span><span class="pln">ViewStatusMessages</span><span class="tag">&lt;/servlet-name&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;servlet-class&gt;</span><span class="pln">ch.qos.logback.classic.ViewStatusMessagesServlet</span><span class="tag">&lt;/servlet-class&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/servlet&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;servlet-mapping&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;servlet-name&gt;</span><span class="pln">ViewStatusMessages</span><span class="tag">&lt;/servlet-name&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;url-pattern&gt;</span><span class="pln">/lbClassicStatus</span><span class="tag">&lt;/url-pattern&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/servlet-mapping&gt;</span></pre>
+   
+   <p>The <code>ViewStatusMessages</code> servlet will be viewable at
+   the URL <code>http://host/yourWebapp/lbClassicStatus</code>
+   </p>
+
+   <h3 class="doAnchor" name="statusListener"><a name="statusListener" href="#statusListener"><span class="anchor"></span></a>Listening to status
+   messages</h3>
+
+   <p>You may also attach a <code>StatusListener</code> to a
+   <code>StatusManager</code> so that you can take immediate action in
+   response to status messages, especially to messages occurring after
+   logback configuration. Registering a status listener is a
+   convenient way to supervise logback's internal state without human
+   intervention.
+   </p>
+
+   <p>Logback ships with a <code>StatusListener</code> implementation
+   called <code><a href="http://logback.qos.ch/xref/ch/qos/logback/core/status/OnConsoleStatusListener.html">OnConsoleStatusListener</a></code>
+   which, as its name indicates, prints all <em>new</em> incoming
+   status messages on the console.
+   </p>
+
+   <p>Here is <a href="http://logback.qos.ch/xref/chapters/configuration/AddStatusListenerApp.html">sample
+   code</a> to register an <code>OnConsoleStatusListener</code>
+   instance with the StatusManager.
+   </p>
+
+   <pre class="prettyprint source"><span class="pln">&nbsp; &nbsp;</span><span class="typ">LoggerContext</span><span class="pln"> lc </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="typ">LoggerContext</span><span class="pun">)</span><span class="pln"> </span><span class="typ">LoggerFactory</span><span class="pun">.</span><span class="pln">getILoggerFactory</span><span class="pun">();</span><span class="pln"> <br>&nbsp; &nbsp;</span><span class="typ">StatusManager</span><span class="pln"> statusManager </span><span class="pun">=</span><span class="pln"> lc</span><span class="pun">.</span><span class="pln">getStatusManager</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp;</span><span class="typ">OnConsoleStatusListener</span><span class="pln"> onConsoleListener </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">OnConsoleStatusListener</span><span class="pun">();</span><span class="pln"><br>&nbsp; &nbsp;statusManager</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">onConsoleListener</span><span class="pun">);</span></pre>
+
+   <p>Note that the registered status listener will only receive status
+   events subsequent to its registration. It will not receive prior
+   messages. Thus, it is usually a good idea to place status listener
+   registration directives at top of the configuration file before
+   other directives.</p>
+
+   <p>It is also possible to register one or more status listeners
+   within a configuration file. Here is an example.</p>
+
+   <p class="example">Example: Registering a status listener
+   (logback-examples/src/main/resources/chapters/configuration/onConsoleStatusListener.xml)</p>
+
+   <span class="asGroovy" onclick="return asGroovy('onConsoleStatusListener');">View as .groovy</span>
+   <pre id="onConsoleStatusListener" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br>&nbsp; </span><b><span class="tag">&lt;statusListener</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.status.OnConsoleStatusListener"</span><span class="pln"> </span><span class="tag">/&gt;</span></b><span class="pln"> &nbsp;<br><br>&nbsp; ... the rest of the configuration file &nbsp;<br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+   <h3 class="doAnchor" name="logback.statusLC"><a name="logback.statusLC" href="#logback.statusLC"><span class="anchor"></span></a>"logback.statusListenerClass" system
+   property</h3>
+
+   <p>One may also register a status listener by setting the
+   "logback.statusListenerClass" Java system property to the name of
+   the listener class you wish to register. For example,
+   </p>
+
+   <p class="source">java <b>-Dlogback.statusListenerClass</b>=ch.qos.logback.core.status.OnConsoleStatusListener&nbsp;...</p>
+   
+   <p>Logback ships with several status listener implementations. <a href="http://logback.qos.ch/xref/ch/qos/logback/core/status/OnConsoleStatusListener.html">OnConsoleStatusListener</a>
+   prints incoming status messages on the console, i.e. on
+   System.out. <a href="http://logback.qos.ch/xref/ch/qos/logback/core/status/OnErrorConsoleStatusListener.html">OnErrorConsoleStatusListener</a>
+   prints incoming status messages on System.err. <a href="http://logback.qos.ch/xref/ch/qos/logback/core/status/NopStatusListener.html">NopStatusListener</a>
+   drops incoming status messages.</p>
+   
+
+   <p>Note that <a href="#automaticStatusPrinting">automatic status
+   printing</a> (in case of errors) is disabled if any status listener
+   is registered during configuration and in particular if the user
+   specifies a status listener via the "logback.statusListenerClass"
+   system. Thus, by setting <code>NopStatusListener</code> as a status
+   listener, you can silence internal status printing altogether. </p>
+   
+   <p class="source">java <b>-Dlogback.statusListenerClass</b>=ch.qos.logback.core.status.NopStatusListener&nbsp;...</p>
+
+
+   <h3 class="doAnchor" name="stopContext"><a name="stopContext" href="#stopContext"><span class="anchor"></span></a>Stopping
+   logback-classic</h3>
+
+   <p>In order to release the resources used by logback-classic, it is
+   always a good idea to stop the logback context. Stopping the
+   context will close all appenders attached to loggers defined by the
+   context and stop any active threads.
+   </p>
+
+<pre class="prettyprint lang-java source"><span class="kwd">import</span><span class="pln"> org</span><span class="pun">.</span><span class="pln">sflf4j</span><span class="pun">.</span><span class="typ">LoggerFactory</span><span class="pun">;</span><span class="pln"><br></span><span class="kwd">import</span><span class="pln"> ch</span><span class="pun">.</span><span class="pln">qos</span><span class="pun">.</span><span class="pln">logback</span><span class="pun">.</span><span class="pln">classic</span><span class="pun">.</span><span class="typ">LoggerContext</span><span class="pun">;</span><span class="pln"><br></span><span class="pun">...</span><span class="pln"><br><br></span><span class="com">// assume SLF4J is bound to logback-classic in the current environment</span><span class="pln"><br></span><b><span class="typ">LoggerContext</span><span class="pln"> loggerContext </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="typ">LoggerContext</span><span class="pun">)</span><span class="pln"> </span><span class="typ">LoggerFactory</span><span class="pun">.</span><span class="pln">getILoggerFactory</span><span class="pun">();</span></b><span class="pln"><br></span><b><span class="pln">loggerContext</span><span class="pun">.</span><span class="pln">stop</span><span class="pun">();</span></b></pre>
+
+   <p>In web-applications the above code could be invoked from within
+   the <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/ServletContextListener.html#contextDestroyed%28javax.servlet.ServletContextEvent%29">contextDestroyed</a>
+   method of <code>ServletContextListener</code> in order to stop
+   logback-classic and release resources.
+   </p>
+
+   <h4 class="doAnchor" name="shutdownHook"><a name="shutdownHook" href="#shutdownHook"><span class="anchor"></span></a>Stopping logback-classic 
+   via a shutdown hook</h4>
+   
+   <p>Installing a JVM shutdown hook is a convenient way for shutting
+   down logback and releasing associated resources.
+   </p>
+
+
+   <pre class="prettyprint source"><span class="tag">&lt;configuration</span><span class="pln"> </span><span class="atn">debug</span><span class="pun">=</span><span class="atv">"true"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp;</span><span class="com">&lt;!-- in the absence of the class attribute, assume <br>&nbsp; &nbsp;ch.qos.logback.core.hook.DelayingShutdownHook --&gt;</span><span class="pln"><br>&nbsp; &nbsp;</span><b><span class="tag">&lt;shutdownHook/&gt;</span></b><span class="pln"><br>&nbsp; .... <br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+   
+   <p>The default shutdown hook, namely <a href="http://logback.qos.ch/apidocs/ch/qos/logback/core/hook/DelayingShutdownHook.html">DelayingShutdownHook</a>,
+   can delay shutdown by a user specified duration. Note that you may
+   install a shutdown hook of your own making by setting the <span class="attr">class</span> attribute to correspond to your shutdown
+   hook's class name.</p>.
+   
+   <h2 class="doAnchor" name="syntax"><a name="syntax" href="#syntax"><span class="anchor"></span></a>Configuration file syntax</h2>
+
+   <p>As you have seen thus far in the manual with plenty of examples
+   still to follow, logback allows you to redefine logging behavior
+   without needing to recompile your code.  Indeed, you can easily
+   configure logback so as to disable logging for certain parts of
+   your application, or direct output to a UNIX Syslog daemon, to a
+   database, to a log visualizer, or forward logging events to a
+   remote logback server, which would log according to local server
+   policy, for example by forwarding the log event to a second logback
+   server.
+   </p>
+	
+   <p>The remainder of this section presents the syntax of
+   configuration files. 
+   </p>
+
+   <p>As will be demonstrated over and over, the syntax of logback
+   configuration files is extremely flexible. As such, it is not
+   possible to specify the allowed syntax with a DTD file or an XML
+   schema. Nevertheless, the very basic structure of the configuration
+   file can be described as, <code>&lt;configuration&gt;</code> element,
+   containing zero or more <code>&lt;appender&gt;</code> elements,
+   followed by zero or more <code>&lt;logger&gt;</code> elements,
+   followed by at most one <code>&lt;root&gt;</code> element. The
+   following diagram illustrates this basic structure.</p>
+
+  
+  <p align="left">
+    <img src="Chapter%203:%20Configuration_files/basicSyntax.png" alt="basic Syntax" title="Basic configuration file structure">
+  </p>
+
+
+    <p class="highlight">If you are unsure which case to use for a
+    given tag name, just follow the <a href="http://en.wikipedia.org/wiki/CamelCase">camelCase
+    convention</a> which is almost always the correct convention.</p>
+
+    <h4 class="doAnchor" name="caseSensitivity"><a name="caseSensitivity" href="#caseSensitivity"><span class="anchor"></span></a>Case sensitivity of
+    tag names</h4>
+   
+    <p>Since logback version 0.9.17, tag names pertaining to explicit
+    rules are case insensitive.  For example, <code>&lt;logger&gt;</code>, <code>&lt;Logger&gt;</code> and
+    <code>&lt;LOGGER&gt;</code> are valid configuration elements and will
+    be interpreted in the same way. Note that XML well-formedness
+    rules still apply, if you open a tag as <code>&lt;xyz&gt;</code> you
+    must close it as <code>&lt;/xyz&gt;</code>, <code>&lt;/XyZ&gt;</code>
+    will not work. As for <a href="http://logback.qos.ch/manual/onJoran.html#implicit">implicit
+    rules</a>, tag names are case sensitive except for the first
+    letter.  Thus, <code>&lt;xyz&gt;</code> and <code>&lt;Xyz&gt;</code> are
+    equivalent but not <code>&lt;xYz&gt;</code>.  Implicit rules usually
+    follow the <a href="http://en.wikipedia.org/wiki/CamelCase">camelCase</a>
+    convention, common in the Java world. Since it is not
+    easy to tell when a tag is associated with an explicit action and
+    when it is associated with an implicit action, it is not trivial
+    to say whether an XML tag is case-sensitive or insensitive with
+    respect to the first letter. If you are unsure which case to use
+    for a given tag name, just follow the camelCase convention which
+    is almost always the correct convention.
+    </p>
+
+    <h4 class="doAnchor" name="loggerElement"><a name="loggerElement" href="#loggerElement"><span class="anchor"></span></a>Configuring loggers, or
+    the <code>&lt;logger&gt;</code> element</h4>
+
+    <p>At this point you should have at least some understanding of <a href="http://logback.qos.ch/manual/architecture.html#effectiveLevel">level inheritance</a> and
+    the <a href="http://logback.qos.ch/manual/architecture.html#basic_selection">basic selection
+    rule</a>. Otherwise, and unless you are an Egyptologist, logback
+    configuration will be no more meaningful to you than are
+    hieroglyphics.
+    </p>
+
+    <p>A logger is configured using the <code>&lt;logger&gt;</code>
+    element. A <code>&lt;logger&gt;</code> element takes exactly one
+    mandatory <span class="attr">name</span> attribute, an optional
+    <span class="attr">level</span> attribute, and an optional <span class="attr">additivity</span> attribute, admitting the values
+    <em>true</em> or <em>false</em>. The value of the <span class="attr">level</span> attribute admitting one of the
+    case-insensitive string values TRACE, DEBUG, INFO, WARN, ERROR,
+    ALL or OFF. The special case-insensitive value <em>INHERITED</em>,
+    or its synonym <em>NULL</em>, will force the level of the logger
+    to be inherited from higher up in the hierarchy. This comes in
+    handy if you set the level of a logger and later decide that
+    it should inherit its level.
+    </p>
+
+    <p class="highlight"> Note that unlike log4j, logback-classic does
+    <em>not</em> close nor remove any previously referenced appenders
+    when configuring a given logger.
+    </p>
+
+    <p>The <code>&lt;logger&gt;</code> element may contain zero or more
+    <code>&lt;appender-ref&gt;</code> elements; each appender thus
+    referenced is added to the named logger. Note that unlike log4j,
+    logback-classic does <em>not</em> close nor remove any previously
+    referenced appenders when configuring a given logger.
+    </p>
+
+
+
+   <h4 class="doAnchor" name="rootElement"><a name="rootElement" href="#rootElement"><span class="anchor"></span></a>Configuring the root
+   logger, or the <code>&lt;root&gt;</code> element</h4>
+
+   <p>The <code>&lt;root&gt;</code> element configures the root
+   logger. It supports a single attribute, namely the <span class="attr">level</span> attribute. It does not allow any other
+   attributes because the additivity flag does not apply to the root
+   logger.  Moreover, since the root logger is already named as
+   "ROOT", it does not allow a name attribute either. The value of the
+   level attribute can be one of the case-insensitive strings TRACE,
+   DEBUG, INFO, WARN, ERROR, ALL or OFF. Note that the level of the
+   root logger cannot be set to INHERITED or NULL.
+   </p>
+
+   <p class="highlight">Note that unlike log4j, logback-classic does
+   <em>not</em> close nor remove any previously referenced appenders
+   when configuring the root logger.</p>
+
+   <p> Similarly to the <code>&lt;logger&gt;</code> element, the
+   <code>&lt;root&gt;</code> element may contain zero or more
+   <code>&lt;appender-ref&gt;</code> elements; each appender thus
+   referenced is added to the root logger. Note that unlike log4j,
+   logback-classic does <em>not</em> close nor remove any previously
+   referenced appenders when configuring the root logger.  </p>
+
+   <h4>Example</h4>
+
+   <p>Setting the level of a logger or root logger is as simple as
+   declaring it and setting its level, as the next example
+   illustrates. Suppose we are no longer interested in seeing any
+   DEBUG messages from any component belonging to the
+   "chapters.configuration" package. The following configuration file
+   shows how to achieve that.
+   </p>
+
+   <p class="example">Example: Setting the level of a logger
+   (logback-examples/src/main/resources/chapters/configuration/sample2.xml)</p>
+
+   <span class="asGroovy" onclick="return asGroovy('sample2');">View as .groovy</span>
+   <pre id="sample2" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.ConsoleAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="com">&lt;!-- encoders are assigned the type<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ch.qos.logback.classic.encoder.PatternLayoutEncoder by default --&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><b><span class="tag">&lt;logger</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"chapters.configuration"</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"INFO"</span><span class="tag">/&gt;</span></b><span class="pln"><br><br>&nbsp; </span><span class="com">&lt;!-- Strictly speaking, the level attribute is not necessary since --&gt;</span><span class="pln"><br>&nbsp; </span><span class="com">&lt;!-- the level of the root level is set to DEBUG by default. &nbsp; &nbsp; &nbsp; --&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"DEBUG"</span><span class="tag">&gt;</span><span class="pln"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"> &nbsp;<br>&nbsp; <br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>When the above configuration file is given as argument to the
+  <em>MyApp3</em> application, it will yield the following output:
+  </p>
+
+<pre class="source">17:34:07.578 [main] INFO  chapters.configuration.MyApp3 - Entering application.
+17:34:07.578 [main] INFO  chapters.configuration.MyApp3 - Exiting application.</pre>
+
+  <p>Note that the message of level DEBUG generated by the <a href="http://logback.qos.ch/xref/chapters/configuration/Foo.html">"chapters.configuration.Foo"</a>
+  logger has been suppressed. See also the Foo class.</p>
+
+  <p>You can configure the levels of as many loggers as you wish.  In
+  the next configuration file, we set the level of the
+  <em>chapters.configuration</em> logger to INFO but at the same time set the level
+  of the <em>chapters.configuration.Foo</em> logger to <code>DEBUG</code>.
+  </p>
+
+  <p class="example">Example: Setting the level of multiple loggers
+  (logback-examples/src/main/resources/chapters/configuration/sample3.xml)</p>
+  
+  <span class="asGroovy" onclick="return asGroovy('sample3');">View as .groovy</span>
+  <pre id="sample3" class="source prettyprint"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.ConsoleAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n<br>&nbsp; &nbsp; &nbsp;</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><b><span class="tag">&lt;logger</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"chapters.configuration"</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"INFO"</span><span class="pln"> </span><span class="tag">/&gt;</span></b><span class="pln"><br>&nbsp; </span><b><span class="tag">&lt;logger</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"chapters.configuration.Foo"</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"DEBUG"</span><span class="pln"> </span><span class="tag">/&gt;</span></b><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"DEBUG"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>Running <code>MyApp3</code> with this configuration file will
+  result in the following output on the console:
+  </p>
+
+<p class="prettyprint source">17:39:27.593 [main] INFO  chapters.configuration.MyApp3 - Entering application.
+17:39:27.593 [main] DEBUG chapters.configuration.Foo - Did it again!
+17:39:27.593 [main] INFO  chapters.configuration.MyApp3 - Exiting application.</p>
+
+   <p>The table below list the loggers and their levels, after
+   <code>JoranConfigurator</code> has configured logback with the
+   <em>sample3.xml</em> configuration file.
+   </p>
+
+   <table class="bodyTable">
+     <tbody><tr>
+       <th>Logger name</th>
+       <th>Assigned Level</th>
+       <th>Effective Level</th>
+     </tr>
+     <tr>
+       <td>root</td>
+       <td><code>DEBUG</code></td>
+       <td><code>DEBUG</code></td>
+     </tr>
+     <tr class="alt">
+       <td>chapters.configuration</td>
+       <td><code>INFO</code></td>
+       <td><code>INFO</code></td>
+     </tr>
+     <tr>
+       <td>chapters.configuration.MyApp3</td>
+       <td><code>null</code></td>
+       <td><code>INFO</code></td>
+     </tr>
+     <tr class="alt">
+       <td>chapters.configuration.Foo</td>
+       <td><code>DEBUG</code></td>
+       <td><code>DEBUG</code></td>
+     </tr>
+   </tbody></table>
+
+  <p>It follows that the two logging statements of level
+  <code>INFO</code> in the <code>MyApp3</code> class as well as the
+  DEBUG messages in <code>Foo.doIt()</code> are all enabled. Note that
+  the level of the root logger is always set to a non-null value,
+  DEBUG by default.
+  </p>
+
+  <p>Let us note that the <a href="http://logback.qos.ch/manual/architecture.html#basic_selection">basic-selection rule</a>
+  depends on the effective level of the logger being invoked, not the
+  level of the logger where appenders are attached. Logback will first
+  determine whether a logging statement is enabled or not, and if
+  enabled, it will invoke the appenders found in the logger hierarchy,
+  regardless of their level. The configuration file
+  <em>sample4.xml</em> is a case in point:
+  </p>
+
+  <p class="example">Example: Logger level sample
+  (logback-examples/src/main/resources/chapters/configuration/sample4.xml)</p>
+  <span class="asGroovy" onclick="return asGroovy('sample4');">View as .groovy</span>
+  <pre id="sample4" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"><br>&nbsp; &nbsp;</span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.ConsoleAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp;</span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp;</span><span class="tag">&lt;pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n<br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><b><span class="tag">&lt;logger</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"chapters.configuration"</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"INFO"</span><span class="pln"> </span><span class="tag">/&gt;</span></b><span class="pln"><br><br>&nbsp; </span><span class="com">&lt;!-- turn OFF all logging (children can override) --&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><b><span class="atn">level</span><span class="pun">=</span><span class="atv">"OFF"</span></b><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>The following table lists the loggers and their levels after
+  applying the <em>sample4.xml</em> configuration file.
+  </p>
+
+  <table class="bodyTable">
+    <tbody><tr>
+      <th>Logger name</th>
+      <th>Assigned Level</th>
+      <th>Effective Level</th>
+    </tr>
+    <tr>
+      <td>root</td>
+      <td><code>OFF</code></td>
+      <td><code>OFF</code></td>
+    </tr>
+    <tr class="alt">
+      <td>chapters.configuration</td>
+      <td><code>INFO</code></td>
+      <td><code>INFO</code></td>
+    </tr>
+    <tr>
+      <td>chapters.configuration.MyApp3</td>
+      <td><code>null</code></td>
+      <td><code>INFO</code></td>
+    </tr>
+    <tr class="alt">
+      <td>chapters.configuration.Foo</td>
+      <td><code>null</code></td>
+      <td><code>INFO</code></td>
+    </tr>
+  </tbody></table>
+
+  <p>The ConsoleAppender named <em>STDOUT</em>, the only configured
+  appender in <em>sample4.xml</em>, is attached to the root logger
+  whose level is set to <code>OFF</code>. However, running
+  <em>MyApp3</em> with configuration script <em>sample4.xml</em> will
+  yield:
+  </p>
+
+  <div class="source"><pre>17:52:23.609 [main] INFO chapters.configuration.MyApp3 - Entering application.
+17:52:23.609 [main] INFO chapters.configuration.MyApp3 - Exiting application.</pre></div>
+
+  <p>Thus, the level of the root logger has no apparent effect because
+  the loggers in <code>chapters.configuration.MyApp3</code> and
+  <code>chapters.configuration.Foo</code> classes are all enabled for the
+  <code>INFO</code> level.  As a side note, the <em>chapters.configuration</em>
+  logger exists by virtue of its declaration in the configuration file
+  - even if the Java source code does not directly refer to it.
+  </p>
+
+  <h4 class="doAnchor" name="configuringAppenders"><a name="configuringAppenders" href="#configuringAppenders"><span class="anchor"></span></a>Configuring
+  Appenders</h4>
+
+  <p>An appender is configured with the <code>&lt;appender&gt;</code>
+  element, which takes two mandatory attributes <span class="attr">name</span> and <span class="attr">class</span>.  The
+  <span class="attr">name</span> attribute specifies the name of the
+  appender whereas the <span class="attr">class</span> attribute
+  specifies the fully qualified name of the appender class to
+  instantiate. The <code>&lt;appender&gt;</code> element may contain zero
+  or one <code>&lt;layout&gt;</code> elements, zero or more
+  <code>&lt;encoder&gt;</code> elements and zero or more
+  <code>&lt;filter&gt;</code> elements. Apart from these three common
+  elements, <code>&lt;appender&gt;</code> elements may contain any number
+  of elements corresponding to JavaBean properties of the appender
+  class. Seamlessly supporting any property of a given logback
+  component is one of the major strengths of <a href="http://logback.qos.ch/manual/onJoran.html">Joran</a> as discussed in a later chapter. The
+  following diagram illustrates the common structure. Note that
+  support for properties is not visible.
+  </p>
+
+  <p align="left">
+    <img src="Chapter%203:%20Configuration_files/appenderSyntax.png" alt="Appender Syntax" title="Appender element syntax">
+  </p>
+
+  <p>The <code>&lt;layout&gt;</code> element takes a mandatory class
+  attribute specifying the fully qualified name of the layout class to
+  instantiate.  As with the <code>&lt;appender&gt;</code> element,
+  <code>&lt;layout&gt;</code> may contain other elements corresponding to
+  properties of the layout instance. Since it's such a common case, if
+  the layout class is <code>PatternLayout</code>, then the class
+  attribute can be omitted as specified by <a href="http://logback.qos.ch/manual/onJoran.html#defaultClassMapping">default class mapping</a>
+  rules.
+  </p>
+
+  <p>The <code>&lt;encoder&gt;</code> element takes a mandatory class
+  attribute specifying the fully qualified name of the encoder class
+  to instantiate. Since it's such a common case, if the encoder class
+  is <code>PatternLayoutEncoder</code>, then the class attribute can
+  be omitted as specified by <a href="http://logback.qos.ch/manual/onJoran.html#defaultClassMapping">default class mapping</a>
+  rules.
+  </p>
+
+  <p>Logging to multiple appenders is as easy as defining the various
+  appenders and referencing them in a logger, as the next
+  configuration file illustrates:
+  </p>
+
+  <p class="example">Example: Multiple loggers
+  (logback-examples/src/main/resources/chapters/configuration/multiple.xml)</p>
+
+  <span class="asGroovy" onclick="return asGroovy('multiple');">View as .groovy</span>
+  <pre id="multiple" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"</span><b><span class="atv">FILE</span></b><span class="atv">"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.FileAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;file&gt;</span><span class="pln">myApp.log</span><span class="tag">&lt;/file&gt;</span><span class="pln"><br><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%date %level [%thread] %logger{10} [%file:%line] %msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"</span><b><span class="atv">STDOUT</span></b><span class="atv">"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.ConsoleAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><b><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="tag">/&gt;</span></b><span class="pln"><br>&nbsp; &nbsp; </span><b><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="tag">/&gt;</span></b><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>These configuration scripts define two appenders called
+  <em>FILE</em> and <em>STDOUT</em>.  The <em>FILE</em> appender logs
+  to a file called <em>myApp.log</em>. The encoder for this appender
+  is a <code>PatternLayoutEncoder</code> that outputs the date, level,
+  thread name, logger name, file name and line number where the log
+  request is located, the message and line separator character(s).
+  The second appender called <code>STDOUT</code> outputs to the
+  console.  The encoder for this appender outputs only the message
+  string followed by a line separator.
+  </p>
+
+  <p>The appenders are attached to the root logger by referencing them
+  by name within an <em>appender-ref</em> element. Note that each
+  appender has its own encoder. Encoders are usually not designed to
+  be shared by multiple appenders. The same is true for layouts. As
+  such, logback configuration files do not provide any syntactical
+  means for sharing encoders or layouts.
+  </p>
+
+  <h4 class="doAnchor" name="cumulative"><a name="cumulative" href="#cumulative"><span class="anchor"></span></a>Appenders accumulate
+  </h4>
+
+  <p>By default, <b>appenders are cumulative</b>: a logger will log to
+  the appenders attached to itself (if any) as well as all the
+  appenders attached to its ancestors.  Thus, attaching the same
+  appender to multiple loggers will cause logging output to be
+  duplicated.
+  </p>
+
+  <p class="example">Example: Duplicate appender
+  (logback-examples/src/main/resources/chapters/configuration/duplicate.xml)</p>
+
+  <span class="asGroovy" onclick="return asGroovy('duplicate');">View as .groovy</span>
+  <pre id="duplicate" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.ConsoleAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;logger</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"chapters.configuration"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/logger&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>Running <code>MyApp3</code> with <em>duplicate.xml</em> will
+  yield the following output:
+  </p>
+
+<p class="source">14:25:36.343 [main] INFO  chapters.configuration.MyApp3 - Entering application.
+14:25:36.343 [main] INFO  chapters.configuration.MyApp3 - Entering application.
+14:25:36.359 [main] DEBUG chapters.configuration.Foo - Did it again!
+14:25:36.359 [main] DEBUG chapters.configuration.Foo - Did it again!
+14:25:36.359 [main] INFO  chapters.configuration.MyApp3 - Exiting application.
+14:25:36.359 [main] INFO  chapters.configuration.MyApp3 - Exiting application.</p>
+
+  <p>Notice the duplicated output. The appender named <em>STDOUT</em>
+  is attached to two loggers, to root and to
+  <em>chapters.configuration</em>. Since the root logger is the
+  ancestor of all loggers and <em>chapters.configuration</em> is the
+  parent of both <em>chapters.configuration.MyApp3</em> and
+  <em>chapters.configuration.Foo</em>, each logging request made with
+  these two loggers will be output twice, once because <em>STDOUT</em>
+  is attached to <em>chapters.configuration</em> and once because it
+  is attached to <em>root</em>.
+  </p>
+
+  <p>Appender additivity is not intended as a trap for new users.  It
+  is quite a convenient logback feature. For instance, you can
+  configure logging such that log messages appear on the console (for
+  all loggers in the system) while messages only from some specific
+  set of loggers flow into a specific appender.
+  </p>
+
+  <p class="example">Example: Multiple appender
+  (logback-examples/src/main/resources/chapters/configuration/restricted.xml)</p>
+  <span class="asGroovy" onclick="return asGroovy('restricted');">View as .groovy</span>
+  <pre id="restricted" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.FileAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;file&gt;</span><span class="pln">myApp.log</span><span class="tag">&lt;/file&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%date %level [%thread] %logger{10} [%file:%line] %msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.ConsoleAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;logger</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"chapters.configuration"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/logger&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>In this example, the console appender will log all the messages
+  (for all loggers in the system) whereas only logging requests
+  originating from the <em>chapters.configuration</em> logger and its
+  children will go into the <em>myApp.log</em> file.
+  </p>
+	
+  <h4 class="doAnchor" name="overrridingCumulativity"><a name="overrridingCumulativity" href="#overrridingCumulativity"><span class="anchor"></span></a>Overriding the
+  default cumulative behaviour</h4>
+
+  <p>In case the default cumulative behavior turns out to be
+  unsuitable for your needs, you can override it by setting the
+  additivity flag to false.  Thus, a branch in your logger tree may
+  direct output to a set of appenders different from those of the rest
+  of the tree.
+  </p>
+
+  <p class="example">Example: Additivity flag
+  (logback-examples/src/main/resources/chapters/configuration/additivityFlag.xml)</p>
+
+  <span class="asGroovy" onclick="return asGroovy('additivityFlag');">View as .groovy</span>
+  <pre id="additivityFlag" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.FileAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;file&gt;</span><span class="pln">foo.log</span><span class="tag">&lt;/file&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%date %level [%thread] %logger{10} [%file : %line] %msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.ConsoleAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;logger</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"chapters.configuration.Foo"</span><span class="pln"> </span><b><span class="atn">additivity</span><span class="pun">=</span><span class="atv">"false"</span></b><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/logger&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>This example, the appender named <em>FILE</em> is attached to the
+  <em>chapters.configuration.Foo</em> logger. Moreover, the <em>chapters.configuration.Foo</em>
+  logger has its additivity flag set to false such that its logging
+  output will be sent to the appender named <em>FILE</em> but not to
+  any appender attached higher in the hierarchy. Other loggers remain
+  oblivious to the additivity setting of the <em>chapters.configuration.Foo</em>
+  logger.  Running the <code>MyApp3</code> application with the
+  <em>additivityFlag.xml</em> configuration file will output results
+  on the console from the <em>chapters.configuration.MyApp3</em> logger.  However,
+  output from the <em>chapters.configuration.Foo</em> logger will appear in the
+  <em>foo.log</em> file and only in that file.
+  </p>
+
+  <h3 class="doAnchor" name="contextName"><a name="contextName" href="#contextName"><span class="anchor"></span></a>Setting the context
+  name</h3>
+
+  <p>As mentioned <a href="http://logback.qos.ch/manual/architecture.html#LoggerContext">in an
+  earlier chapter</a>, every logger is attached to a logger
+  context. By default, the logger context is called
+  "default". However, you can set a different name with the help of
+  the <code>&lt;contextName&gt;</code> configuration directive. Note that
+  once set, the logger context name <a href="http://logback.qos.ch/apidocs/ch/qos/logback/core/ContextBase.html#setName%28java.lang.String%29">cannot
+  be changed</a>. Setting the context name is a simple and
+  straightforward method in order to distinguish between multiple
+  applications logging to the same target.
+  </p>
+  
+  <p class="example">Example: Set the context name and display it
+  (logback-examples/src/main/resources/chapters/configuration/contextName.xml)</p>
+
+  <span class="asGroovy" onclick="return asGroovy('contextName');">View as .groovy</span>
+  <pre id="contextName" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br>&nbsp; </span><b><span class="tag">&lt;contextName&gt;</span><span class="pln">myAppName</span><span class="tag">&lt;/contextName&gt;</span></b><span class="pln"><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.ConsoleAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%d </span><b><span class="pln">%contextName</span></b><span class="pln"> [%t] %level %logger{36} - %msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"STDOUT"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>This last example illustrates naming of the logger
+  context. Adding the <a href="http://logback.qos.ch/manual/layouts.html#conversionWord">contextName conversion word</a>
+  in layout's pattern will output the said name.</p>
+  
+  <!-- =============================================================== -->
+ 
+  <h3 class="doAnchor" name="variableSubstitution"><a name="variableSubstitution" href="#variableSubstitution"><span class="anchor"></span></a>Variable
+  substitution</h3>
+
+  <p><span class="label">Note</span> Earlier versions of this document
+  used the term "property substitution" instead of the term
+  "variable". Please consider both terms interchangeable although the
+  latter term conveys a clearer meaning.
+  </p>
+
+  <p>As in many scripting languages, logback configuration files
+  support definition and substitution of variables. Variables can be
+  defined within the configuration file itself, in an external file,
+  in an external resource or even computed and <a href="#definingPropsOnTheFly">defined on the fly</a>. 
+  </p>
+
+  <p class="highlight">Variable substitution can occur at any point in
+  a configuration file where a value can be specified.</p>
+
+  <p>Variable substitution can occur at any point in a configuration
+  file where a value can be specified. The syntax of variable
+  substitution is similar to that of Unix shells. The string between
+  an opening <em>${</em> and closing <em>}</em> is interpreted as a
+  reference to the <em>value</em> of the property.  For property
+  <em>aName</em>, the string "${aName}" will be replaced with the
+  value held by the <em>aName</em> property.
+  </p>
+
+  <p>Variables have a <a href="#scopes">scope</a> (see below).</p>
+
+  <p>As they often come in handy, the HOSTNAME and CONTEXT_NAME
+  variables are automatically defined and have context scope.</p>
+
+   <h4 class="doAnchor" name="definingProps"><a name="definingProps" href="#definingProps"><span class="anchor"></span></a>Defining variables</h4>
+
+  <p>Variables can be defined one at a time in the configuration file
+  itself or loaded wholesale from an external properties file or an
+  external resource. For historical reasons, the XML element for
+  defining variables is <code>&lt;property&gt;</code> although in
+  logback 1.0.7 and later the element <code>&lt;variable&gt;</code> can
+  be used interchangeably.</p>
+
+  <p>The next example shows a variable declared at the beginning of
+  the configuration file. It is then used further down the file to
+  specify the location of the output file.
+  </p>
+
+  <p class="example">Example: Simple Variable substitution
+  (logback-examples/src/main/resources/chapters/configuration/variableSubstitution1.xml)
+  </p>
+
+  <span class="asGroovy" onclick="return asGroovy('variableSubstitution1');">View as .groovy</span>
+  <pre id="variableSubstitution1" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><b><span class="tag">&lt;property</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"USER_HOME"</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"/home/sebastien"</span><span class="pln"> </span><span class="tag">/&gt;</span></b><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.FileAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><b><span class="tag">&lt;file&gt;</span><span class="pln">${USER_HOME}/myApp.log</span><span class="tag">&lt;/file&gt;</span></b><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>The next example shows the use of a System property to achieve
+  the same result. The property is not declared in the configuration
+  file, thus logback will look for it in the System properties. Java
+  system properties can be set on the command line as shown next:
+  </p>
+  
+  <p class="source">java -DUSER_HOME="/home/sebastien" MyApp2</p>
+
+  <p class="example">Example: System Variable substitution
+  (logback-examples/src/main/resources/chapters/configuration/variableSubstitution2.xml)
+  </p>
+  <span class="asGroovy" onclick="return asGroovy('variableSubstitution2');">View as .groovy</span>
+  <pre id="variableSubstitution2" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.FileAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><b><span class="tag">&lt;file&gt;</span><span class="pln">${USER_HOME}/myApp.log</span><span class="tag">&lt;/file&gt;</span></b><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  
+  <p>When multiple variables are needed, it may be more convenient to
+  create a separate file that will contain all the variables. Here is
+  how one can do such a setup.
+  </p>
+
+  <p class="example">Example: Variable substitution using a
+  separate file
+  (logback-examples/src/main/resources/chapters/configuration/variableSubstitution3.xml)
+  </p>
+  <span class="asGroovy" onclick="return asGroovy('variableSubstitution3');">View as .groovy</span>
+  <pre id="variableSubstitution3" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><b><span class="tag">&lt;property</span><span class="pln"> </span><span class="atn">file</span><span class="pun">=</span><span class="atv">"src/main/java/chapters/configuration/variables1.properties"</span><span class="pln"> </span><span class="tag">/&gt;</span></b><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.FileAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp;</span><b><span class="tag">&lt;file&gt;</span><span class="pln">${USER_HOME}/myApp.log</span><span class="tag">&lt;/file&gt;</span></b><span class="pln"><br>&nbsp; &nbsp; &nbsp;</span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp;</span><span class="tag">&lt;pattern&gt;</span><span class="pln">%msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp;</span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp;</span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; &nbsp;</span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp;</span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; &nbsp;</span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+   <p>This configuration file contains a reference to a file named
+   <em>variables1.properties</em>.  The variables contained in that
+   file will be read and then defined within local scope. Here is what
+   the <em>variable.properties</em> file might look like.
+   </p>
+
+   <em>Example: Variable file
+   (logback-examples/src/main/resources/chapters/configuration/variables1.properties)</em>
+
+   <pre class="source">USER_HOME=/home/sebastien</pre>
+
+   <p>You may also reference a resource on the class path instead of a
+   file.</p>
+
+  <pre class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><b><span class="tag">&lt;property</span><span class="pln"> </span><span class="atn">resource</span><span class="pun">=</span><span class="atv">"resource1.properties"</span><span class="pln"> </span><span class="tag">/&gt;</span></b><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.FileAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp;</span><b><span class="tag">&lt;file&gt;</span><span class="pln">${USER_HOME}/myApp.log</span><span class="tag">&lt;/file&gt;</span></b><span class="pln"><br>&nbsp; &nbsp; &nbsp;</span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp;</span><span class="tag">&lt;pattern&gt;</span><span class="pln">%msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp;</span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp;</span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; &nbsp;</span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp;</span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; &nbsp;</span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+
+   <h4 class="doAnchor" name="scopes"><a name="scopes" href="#scopes"><span class="anchor"></span></a>Scopes</h4>
+
+   <p>A property can be defined for insertion in <em>local scope</em>,
+   in <em>context scope</em>, or in <em>system scope</em>. Local scope
+   is the default. Although it is possible to read variables from the
+   OS environment, it is not possible to write into the OS
+   environment.</p>
+
+
+   <p><span class="label">local scope</span> A property with local
+   scope exists from the point of its definition in a configuration
+   file until the end of interpretation/execution of said
+   configuration file. As a corollary, each time a configuration file
+   is parsed and executed, variables in local scope are defined
+   anew.</p>
+
+   <p><span class="label">context scope</span> A property with context
+   scope is inserted into the context and lasts as long as the context
+   or until it is cleared.  Once defined, a property in context scope
+   is part of the context. As such, it is available in all logging
+   events, including those sent to remote hosts via serialization. 
+   </p>
+
+   <p><span class="label">system scope</span> A property with system
+   scope is inserted into the JVM's system properties and lasts as
+   long as the JVM or until it is cleared.
+   </p>
+ 
+   <p class="highlight">Properties are looked up in the the local
+   scope first, in the context scope second, in the system properties
+   scope third, and in the OS environment last.
+   </p>
+
+   <p>During substitution, properties are looked up in the local scope
+   first, in the context scope second, in the system properties scope
+   third, and in the <a href="http://docs.oracle.com/javase/tutorial/essential/environment/env.html">OS
+   environment</a> fourth and last.
+   </p>
+
+   <p>The <span class="attr">scope</span> attribute of the
+   <code>&lt;property&gt;</code> element, <code>&lt;define&gt;</code>
+   element or the <code>&lt;insertFromJNDI&gt;</code> element can be used
+   to set the scope of a property. The <span class="attr">scope</span>
+   attribute admits "local", "context" and "system" strings as
+   possible values. If not specified, the scope is always assumed to
+   be "local".
+   </p>
+
+   <p class="example">Example: A variable defined in "context" scope
+   (logback-examples/src/main/resources/chapters/configuration/contextScopedVariable.xml)
+   </p>
+
+  <span class="asGroovy" onclick="return
+  asGroovy('contextScopedVariable');">View as .groovy</span>
+  <pre id="contextScopedVariable" class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;property</span><span class="pln"> </span><b class="big"><span class="atn">scope</span><span class="pun">=</span><span class="atv">"context"</span></b><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"nodeId"</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"firstNode"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.FileAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><b><span class="tag">&lt;file&gt;</span><span class="pln">/opt/${nodeId}/myApp.log</span><span class="tag">&lt;/file&gt;</span></b><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+   <p>In the above example, given that the <em>nodeId</em> property is
+   defined in the context scope, it will be available in every logging
+   event, even those sent to remote hosts via serialization.</p>
+
+
+  <h3 class="doAnchor" name="defaultValuesForVariables"><a name="defaultValuesForVariables" href="#defaultValuesForVariables"><span class="anchor"></span></a>Default values
+  for variables</h3>
+
+  <p>Under certain circumstances, it may be desirable for a variable
+  to have a default value if it is not declared or its value is
+  null. As in the <a href="http://tldp.org/LDP/abs/html/parameter-substitution.html">Bash
+  shell</a>, default values can be specified using the <b>":-"</b>
+  operator. For example, assuming the variable named <em>aName</em> is
+  not defined, <code>"${aName<b>:-golden</b>}"</code> will be
+  interpreted as "golden".</p>
+
+   <h3 class="doAnchor" name="nestedSubst"><a name="nestedSubst" href="#nestedSubst"><span class="anchor"></span></a>Nested variables</h3>
+
+   <p>Variable nesting is fully supported. Both the name,
+   default-value and value definition of a variable can reference
+   other variables.</p>
+
+
+   <h4>value nesting</h4>
+   <p>The value definition of a variable can contain references to
+   other variables. Suppose you wish to use variables to specify not
+   only the destination directory but also the file name, and combine
+   those two variables in a third variable called "destination". The
+   properties file shown below gives an example.
+   </p>
+
+   <p class="example">Example: Nested variable references
+   (logback-examples/src/main/resources/chapters/configuration/variables2.properties)</p>
+
+   <pre class="source">USER_HOME=/home/sebastien
+fileName=myApp.log
+<b>destination=${USER_HOME}/${fileName}</b></pre>
+
+    <p>Note that in the properties file above, "destination" is
+    composed from two other variables, namely "USER_HOME" and
+    "fileName".
+    </p>
+    
+    <em>Example: Variable substitution using
+    a separate file
+    (logback-examples/src/main/resources/chapters/configuration/variableSubstitution4.xml)</em>
+
+    <pre class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;property</span><span class="pln"> </span><span class="atn">file</span><span class="pun">=</span><span class="atv">"variables2.properties"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.FileAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><b><span class="tag">&lt;file&gt;</span><span class="pln">${destination}</span><span class="tag">&lt;/file&gt;</span></b><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%msg%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"debug"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+
+   <h4>name nesting</h4>
+
+   <p>When referencing a variable, the variable name may contain a
+   reference to another variable. For example, if the variable named
+   "userid" is assigned the value "alice", then
+   "${${userid}.password}" references the variable with the name
+   "alice.password".</p>
+
+   <h4>default value nesting</h4>
+
+   <p>The default value of a variable can reference a another
+   variable.  For example, assuming the variable 'id' is unassigned
+   and the variable 'userid' is assigned the value "alice", then the
+   expression "${id<b>:-</b>${userid}}" will return "alice".
+   </p>
+
+
+  <!-- ==============================================================
+       -->
+  <h3 class="doAnchor" name="hostname"><a name="hostname" href="#hostname"><span class="anchor"></span></a>HOSTNAME property</h3>
+
+  <p>As it often comes in handy, the <code>HOSTNAME</code> property is
+  defined automatically during configuration with context scope.</p>
+
+  <!-- ============================================================== -->
+  <h3 class="doAnchor" name="context_name"><a name="context_name" href="#context_name"><span class="anchor"></span></a>CONTEXT_NAME property</h3>
+
+  <p>As its name indicates, the <code>CONTEXT_NAME</code> property
+  corresponds to the name of the current logging context.</p>
+
+  <!-- ============================================================== -->
+  
+  <h3 class="doAnchor" name="timestamp"><a name="timestamp" href="#timestamp"><span class="anchor"></span></a>Setting a timestamp</h3>
+
+  <p>The <em>timestamp</em> element can define a property according to
+  current date and time. The <em>timestamp</em> element is <a href="http://logback.qos.ch/manual/appenders.html#uniquelyNamed">explained in a subsequent
+  chapter</a>.</p>
+
+  <!-- ============================================================== -->
+  <h3 class="doAnchor" name="definingPropsOnTheFly"><a name="definingPropsOnTheFly" href="#definingPropsOnTheFly"><span class="anchor"></span></a>Defining
+  properties on the fly</h3>
+
+  <p>You may define properties dynamically using the
+  <code>&lt;define&gt;</code> element. The define element takes two
+  mandatory attributes: <span class="attr">name</span> and <span class="attr">class</span>. The <span class="attr">name</span>
+  attribute designates the name of the property to set whereas the
+  <span class="attr">class</span> attribute designates any class
+  implementing the <a href="http://logback.qos.ch/xref/ch/qos/logback/core/spi/PropertyDefiner.html">PropertyDefiner</a>
+  interface. The value returned by the <code>getPropertyValue</code>()
+  method of the <code>PropertyDefiner</code> instance will be the
+  value of the named property. You may also specify a <a href="#scopes">scope</a> for the named property by specifying a
+  <span class="attr">scope</span> attribute.
+  </p>
+
+  <p>Here is an example.</p>
+
+  <pre class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;define</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"rootLevel"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"a.class.implementing.PropertyDefiner"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;shape&gt;</span><span class="pln">round</span><span class="tag">&lt;/shape&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;color&gt;</span><span class="pln">brown</span><span class="tag">&lt;/color&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;size&gt;</span><span class="pln">24</span><span class="tag">&lt;/size&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/define&gt;</span><span class="pln"><br>&nbsp;<br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"${rootLevel}"</span><span class="tag">/&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>In the above example, shape, color and size are properties of
+  "a.class.implementing.PropertyDefiner". As long as there is a setter
+  for a given property in your implementation of the
+  <code>PropertyDefiner</code> instance, logback will inject the
+  appropriate values as specified in the configuration file. </p>
+
+ 
+
+  <p>At the present time, logback does ships with two fairly simple
+  implementations of <code>PropertyDefiner</code>.  
+  </p>
+
+  <table class="bodyTable striped">
+    <tbody><tr>
+      <th>Implementation name</th>
+      <th>Description</th>
+    </tr>
+
+    <tr>
+      <td><a href="http://logback.qos.ch/apidocs/ch/qos/logback/core/property/FileExistsPropertyDefiner.html"><code>FileExistsPropertyDefiner</code></a>
+      </td>
+      <td>Set the named variable to "true" if the file specified by
+      <span class="prop">path</span> property exists, to "false"
+      otherwise.
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://logback.qos.ch/apidocs/ch/qos/logback/core/property/FileExistsPropertyDefiner.html"><code>ResourceExistsPropertyDefiner</code></a>
+      </td>
+      <td>Set the named variable to "true" if the <span class="prop">resource</span> specified by the user is available
+      on the class path, to "false" otherwise.
+      </td>
+    </tr>
+  </tbody></table>
+
+  <!-- ============================================================== -->
+
+  <h3 class="doAnchor" name="conditional"><a name="conditional" href="#conditional"><span class="anchor"></span></a>Conditional processing of
+  configuration files</h3>
+  
+  <p>Developers often need to juggle between several logback
+  configuration files targeting different environments such as
+  development, testing and production. These configuration files have
+  substantial parts in common differing only in a few places. To avoid
+  duplication, logback supports conditional processing of
+  configuration files with the help of <code>&lt;if&gt;</code>,
+  <code>&lt;then&gt;</code> and <code>&lt;else&gt;</code> elements so that a
+  single configuration file can adequately target several
+  environments. Note that conditional processing requires the <a href="http://logback.qos.ch/setup.html#janino">Janino library</a>.
+  </p>
+
+  <p>The general format for conditional statements is shown below.</p>
+
+  <pre class="prettyprint source"><span class="pln">&nbsp; &nbsp;</span><span class="com">&lt;!-- if-then form --&gt;</span><span class="pln"><br>&nbsp; &nbsp;</span><span class="tag">&lt;if</span><span class="pln"> </span><span class="atn">condition</span><span class="pun">=</span><span class="atv">"some conditional expression"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;then&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; ...<br>&nbsp; &nbsp; </span><span class="tag">&lt;/then&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/if&gt;</span><span class="pln"><br>&nbsp; <br>&nbsp; </span><span class="com">&lt;!-- if-then-else form --&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;if</span><span class="pln"> </span><span class="atn">condition</span><span class="pun">=</span><span class="atv">"some conditional expression"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;then&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; ...<br>&nbsp; &nbsp; </span><span class="tag">&lt;/then&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;else&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; ...<br>&nbsp; &nbsp; </span><span class="tag">&lt;/else&gt;</span><span class="pln"> &nbsp; &nbsp;<br>&nbsp; </span><span class="tag">&lt;/if&gt;</span></pre>  
+
+  <p>The condition is a Java expression in which only context
+  properties or system properties are accessible. For a key passed as
+  argument, the <code>property</code>() or its shorter equivalent
+  <code>p</code>() methods return the String value of the property.
+  For example, to access the value of a property with key "k", you
+  would write <code>property("k")</code> or equivalently
+  <code>p("k")</code>. If the property with key "k" is undefined, the
+  property method will return the empty string and not null. This
+  avoids the need to check for null values.</p>
+
+  <p>The <code>isDefined()</code> method can be used to check whether
+  a property is defined. For example, to check whether the property
+  "k" is defined you would write <code>isDefined("k")</code>
+  Similarly, if you need to check whether a property is null, the
+  <code>isNull()</code> method is provided. Example:
+  <code>isNull("k")</code>.</p>
+
+  <pre class="prettyprint source"><span class="tag">&lt;configuration</span><span class="pln"> </span><span class="atn">debug</span><span class="pun">=</span><span class="atv">"true"</span><span class="tag">&gt;</span><span class="pln"><br><br>&nbsp; </span><b><span class="tag">&lt;if</span><span class="pln"> </span><span class="atn">condition</span><span class="pun">=</span><span class="atv">'property("HOSTNAME").contains("torino")'</span><span class="tag">&gt;</span></b><span class="pln"><br>&nbsp; &nbsp; </span><b><span class="tag">&lt;then&gt;</span></b><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"CON"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.ConsoleAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%d %-5level %logger{35} - %msg %n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;root&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"CON"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><b><span class="tag">&lt;/then&gt;</span></b><span class="pln"><br>&nbsp; </span><b><span class="tag">&lt;/if&gt;</span></b><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.FileAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;file&gt;</span><span class="pln">${randomOutputDir}/conditional.log</span><span class="tag">&lt;/file&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%d %-5level %logger{35} - %msg %n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp;</span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"ERROR"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp;</span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"FILE"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  
+  <p>Conditional processing is supported <em>anywhere</em> within the
+  <code>&lt;configuration&gt;</code> element. Nested if-then-else
+  statements are also supported. However, XML syntax is awfully
+  cumbersome and is ill suited as the foundation of a general purpose
+  programming language.  Consequently, too many conditionals will
+  quickly render your configuration files incomprehensible to subsequent
+  readers, including yourself.
+  </p>
+
+
+  <!-- ============================================================== -->
+
+   <h3 class="doAnchor" name="insertFromJNDI"><a name="insertFromJNDI" href="#insertFromJNDI"><span class="anchor"></span></a>Obtaining variables from
+   JNDI</h3>
+
+   <p>Under certain circumstances, you may want to make use of
+   env-entries stored in JNDI. The <code>&lt;insertFromJNDI&gt;</code>
+   configuration directive extracts an env-entry stored in JNDI and
+   inserts the property in local scope with key specified by the <span class="attr">as</span> attribute. As all properties, it is possible
+   to insert the new property into a <a href="#scopes">different
+   scope</a> with the help of the <em>scope</em> attribute.
+   </p>
+
+   <p class="example">Example: Insert as properties env-entries
+   obtained via JNDI
+   (logback-examples/src/main/resources/chapters/configuration/insertFromJNDI.xml)</p>
+
+   <pre class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br>&nbsp; </span><b><span class="tag">&lt;insertFromJNDI</span><span class="pln"> </span><span class="atn">env-entry-name</span><span class="pun">=</span><span class="atv">"java:comp/env/appName"</span><span class="pln"> </span><span class="atn">as</span><span class="pun">=</span><span class="atv">"</span><span class="green"><span class="atv">appName"</span></span><span class="pln"> </span><span class="tag">/&gt;</span></b><span class="pln"><br>&nbsp; </span><b><span class="tag">&lt;contextName&gt;</span><span class="green"><span class="pln">${appName}</span></span><span class="tag">&lt;/contextName&gt;</span></b><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;appender</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"CONSOLE"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.core.ConsoleAppender"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;encoder&gt;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="tag">&lt;pattern&gt;</span><span class="pln">%d ${CONTEXT_NAME} %level %msg %logger{50}%n</span><span class="tag">&lt;/pattern&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;/encoder&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/appender&gt;</span><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"DEBUG"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"CONSOLE"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>In this last example, the "java:comp/env/appName" env-entry is
+  inserted as the <span class="variable">appName</span> property. Note
+  that the <code>&lt;contextName&gt;</code> directive sets the context
+  name based on the value of the <span class="variable">appName</span>
+  property inserted by the previous <code>&lt;insertFromJNDI&gt;</code>
+  directive.
+  </p>
+
+  <h3 class="doAnchor" name="fileInclusion"><a name="fileInclusion" href="#fileInclusion"><span class="anchor"></span></a>File inclusion</h3>
+
+  <p>Joran supports including parts of a configuration file from
+  another file. This is done by declaring a <code>&lt;include&gt;</code>
+  element, as shown below:
+  </p>
+
+  <p class="example">Example: File include
+  (logback-examples/src/main/resources/chapters/configuration/containingConfig.xml)</p>
+
+  <pre class="prettyprint source"><span class="tag">&lt;configuration&gt;</span><span class="pln"><br>&nbsp; </span><b><span class="tag">&lt;include</span><span class="pln"> </span><span class="atn">file</span><span class="pun">=</span><span class="atv">"src/main/java/chapters/configuration/includedConfig.xml"</span><span class="tag">/&gt;</span></b><span class="pln"><br><br>&nbsp; </span><span class="tag">&lt;root</span><span class="pln"> </span><span class="atn">level</span><span class="pun">=</span><span class="atv">"DEBUG"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="tag">&lt;appender-ref</span><span class="pln"> </span><span class="atn">ref</span><span class="pun">=</span><span class="atv">"includedConsole"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/root&gt;</span><span class="pln"><br><br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>The target file MUST have its elements nested inside an
+  <code>&lt;included&gt;</code> element. For example, a
+  <code>ConsoleAppender</code> could be declared as:
+  </p>
+
+  <p class="example">Example: File include
+  (logback-examples/src/main/resources/chapters/configuration/includedConfig.xml)</p>
+
+  <pre class="source"><b class="green big">&lt;included&gt;</b>
+  &lt;appender name="includedConsole" class="ch.qos.logback.core.ConsoleAppender"&gt;
+    &lt;encoder&gt;
+      &lt;pattern&gt;"%d - %m%n"&lt;/pattern&gt;
+    &lt;/encoder&gt;
+  &lt;/appender&gt;
+<b class="green big">&lt;/included&gt;</b></pre>
+
+
+  <p>Again, please note the mandatory
+  <code class="big green">&lt;included&gt;</code> element.</p>
+
+  <p>The contents to include can be referenced as a file, as a
+  resource, or as a URL.</p>
+
+  <ul>
+
+    <li><b>As a file:</b><br> To include a file use the <span class="attr">file</span> attribute. You can use relative paths but
+    note that the current directory is defined by the application and
+    is not necessarily related to the path of the configuration
+    file.</li>
+
+    <li><p><b>As a resource:</b><br> To include a resource, i.e a
+    file found on the class path, use the <span class="attr">resource</span> attribute.</p>
+
+    <pre class="prettyprint source"><span class="tag">&lt;include</span><span class="pln"> </span><span class="atn">resource</span><span class="pun">=</span><span class="atv">"includedConfig.xml"</span><span class="tag">/&gt;</span></pre>
+    
+    </li>
+
+    <li><p><b>As a URL:</b><br> To include the contents of a URL use
+    the <span class="attr">url</span> attribute.</p>
+
+    <pre class="prettyprint source"><span class="tag">&lt;include</span><span class="pln"> </span><span class="atn">url</span><span class="pun">=</span><span class="atv">"http://some.host.com/includedConfig.xml"</span><span class="tag">/&gt;</span></pre>
+
+    </li>
+  </ul>
+
+  <p>If it cannot find the file to be included, logback will complain
+  by printing a status message.  In case the included file is
+  optional, you can suppress the warning message by setting <span class="attr">optional</span> attribute to <code>true</code> in the
+  <code>&lt;include&gt;</code> element.</p>
+
+
+  <pre class="prettyprint source"><span class="tag">&lt;include</span><span class="pln"> </span><span class="atn">optional</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln"> ....</span><span class="tag">/&gt;</span></pre>
+
+  <!-- ==================== ContextListener =================== -->
+  <h2 class="doAnchor" name="contextListener"><a name="contextListener" href="#contextListener"><span class="anchor"></span></a>Adding a context
+  listener</h2>
+
+  <p>Instances of the <a href="http://logback.qos.ch/xref/ch/qos/logback/classic/spi/LoggerContextListener.html">LoggerContextListener</a>
+  interface listen to events pertaining to the lifecycle of a logger
+  context. 
+  </p>
+
+
+  <p><code>JMXConfigurator</code> is one implementation of the
+  <code>LoggerContextListener</code> interface. It is described in a <a href="http://logback.qos.ch/manual/jmxConfig.html">subsequent chapter</a>.
+  </p>
+
+  <h3 class="doAnchor" name="LevelChangePropagator"><a name="LevelChangePropagator" href="#LevelChangePropagator"><span class="anchor"></span></a>LevelChangePropagator</h3>
+
+  <p>As of version 0.9.25, logback-classic ships with <a href="http://logback.qos.ch/xref/ch/qos/logback/classic/jul/LevelChangePropagator.html">LevelChangePropagator</a>,
+  an implementation of <code>LoggerContextListener</code> which
+  propagates changes made to the level of any logback-classic logger
+  onto the java.util.logging framework. Such propagation eliminates
+  the performance impact of disabled log statements. Instances of <a href="http://download.oracle.com/javase/1.5.0/docs/api/java/util/logging/LogRecord.html?is-external=true">LogRecord</a>
+  will be sent to logback (via SLF4J) only for enabled log
+  statements. This makes it reasonable for real-world applications to
+  use the <a href="http://www.slf4j.org/legacy.html#jul-to-slf4j">jul-to-slf4j</a>
+  bridge.
+  </p>
+
+
+  <p>The contextListener element can be used to install <code>LevelChangePropagator</code> as shown next.</p>
+  
+  <pre class="prettyprint source"><span class="tag">&lt;configuration</span><span class="pln"> </span><span class="atn">debug</span><span class="pun">=</span><span class="atv">"true"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; </span><b><span class="tag">&lt;contextListener</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.classic.jul.LevelChangePropagator"</span><span class="tag">/&gt;</span></b><span class="pln"><br>&nbsp; .... <br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+
+  <p>Setting the <span class="option">resetJUL</span> property of
+  LevelChangePropagator will reset all previous level configurations
+  of all j.u.l. loggers. However, previously installed handlers will be
+  left untouched.</p>
+
+  <pre class="prettyprint source"><span class="tag">&lt;configuration</span><span class="pln"> </span><span class="atn">debug</span><span class="pun">=</span><span class="atv">"true"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; </span><span class="tag">&lt;contextListener</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ch.qos.logback.classic.jul.LevelChangePropagator"</span><span class="tag">&gt;</span><span class="pln"><br>&nbsp; &nbsp; </span><b><span class="tag">&lt;resetJUL&gt;</span><span class="pln">true</span><span class="tag">&lt;/resetJUL&gt;</span></b><span class="pln"><br>&nbsp; </span><span class="tag">&lt;/contextListener&gt;</span><span class="pln"><br>&nbsp; ....<br></span><span class="tag">&lt;/configuration&gt;</span></pre>
+  <p>
+  </p>
+  
+
+  <script src="Chapter%203:%20Configuration_files/footer.js" type="text/javascript"></script><table class="footer" border="0"><tbody><tr><td valign="top">Copyright © 2016  <a href="http://www.qos.ch/">QOS.ch</a></td>  <td rowspan="2">    <a href="http://twitter.com/qos_ch">      <img alt="Follow @qos_ch" src="Chapter%203:%20Configuration_files/follow_us.png">    </a>  </td></tr><tr><td colspan="1" align="left">We are actively looking for volunteers to proofread the documentation. Please send your corrections or suggestions for improvement to "corrections@qos.ch". See also the <a href="http://articles.qos.ch/contributing.html">instructions for contributors</a>.</td>  <td>&nbsp;</td></tr></tbody></table>
+</div>
+
+
+</body></html>
